@@ -1,0 +1,9 @@
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\CMSIS/core_cm7.h:1911:22:__NVIC_EnableIRQ	16	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_common_arm.h:514:24:EnableIRQ	24	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_common_arm.h:732:24:DisableGlobalIRQ	16	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_common_arm.h:758:20:EnableGlobalIRQ	24	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_flexcan.h:1765:20:FLEXCAN_EnableMbInterrupts	40	static
+../board/peripherals.c:140:13:BOARD_LPUART1_init	8	static
+../board/peripherals.c:238:13:BOARD_CAN2_init	16	static
+../board/peripherals.c:260:6:BOARD_InitPeripherals	8	static
+../board/peripherals.c:270:6:BOARD_InitBootPeripherals	8	static
