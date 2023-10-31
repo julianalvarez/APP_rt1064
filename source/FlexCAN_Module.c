@@ -67,7 +67,7 @@ int main(void) {
 		else
 			PRINTF("SEND ERROR\r\n");
 
-		for (i = 0; i < 40000000U; i++)//
+		for (i = 0; i < 40000000U; i++)
 		{
 			__ASM("nop");
 		}
