@@ -6,6 +6,7 @@
  */
 #include <can.h>
 #include "peripherals.h"
+#include "fsl_debug_console.h"
 
 #define TX_MESSAGE_BUFFER_NUM (2)
 #define RX_MESSAGE_BUFFER_NUM (1)
@@ -46,7 +47,6 @@ uint8_t CAN_Send_Msg(uint8_t* msg,uint8_t len)
 uint8_t CAN_Receive_Msg(uint8_t *buf)
 {
 	uint8_t datalen=0;
-
 	if(rxComplete==true)
 	{
 		rxComplete=false;

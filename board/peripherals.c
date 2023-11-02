@@ -197,8 +197,8 @@ instance:
         - mbID: '1'
         - mbType: 'mbRx'
         - rxMb:
-          - id: '124'
-          - format: 'kFLEXCAN_FrameFormatExtend'
+          - id: '0x124'
+          - format: 'kFLEXCAN_FrameFormatStandard'
           - type: 'kFLEXCAN_FrameTypeData'
       - 1:
         - mbID: '2'
@@ -230,24 +230,18 @@ const flexcan_config_t BOARD_CAN2_config = {
 };
 /* Message buffer 1 configuration structure */
 const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1 = {
-  .id = FLEXCAN_ID_EXT(124UL),
-  .format = kFLEXCAN_FrameFormatExtend,
+  .id = FLEXCAN_ID_STD(292UL),
+  .format = kFLEXCAN_FrameFormatStandard,
   .type = kFLEXCAN_FrameTypeData
 };
 
 static void BOARD_CAN2_init(void) {
-	flexcan_rx_mb_config_t mbConfig;
-
-	/* Message buffer 1 initialization */
-	mbConfig.format = kFLEXCAN_FrameFormatExtend;
-	mbConfig.type = kFLEXCAN_FrameTypeData;
-	mbConfig.id = FLEXCAN_ID_STD(0x124);
 
 	FLEXCAN_Init(BOARD_CAN2_PERIPHERAL, &BOARD_CAN2_config, BOARD_CAN2_CLOCK_SOURCE);
 
 	FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 1U << 1U);
 	/* Message buffer 1 initialization */
-	FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &mbConfig, true);
+	FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &BOARD_CAN2_rx_mb_config_1, true);
 	/* Message buffer 2 initialization */
 	FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
 	/* Enable interrupt CAN2_IRQn request in the NVIC. */
