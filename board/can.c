@@ -73,7 +73,10 @@ void CAN_ProcessIRQ(void)
 	{
 		FLEXCAN_ClearMbStatusFlags(CAN2,1<<RX_MESSAGE_BUFFER_NUM);
 		FLEXCAN_ReadRxMb(TS_CAN,RX_MESSAGE_BUFFER_NUM,&can2_rxframe);
-		rxComplete=true;
+		if(can2_rxframe.id == FLEXCAN_RX_MB_STD_MASK(0x124, 0, 0))
+		{
+			rxComplete=true;
+		}
 	}
 	__DSB();
 }
