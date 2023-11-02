@@ -9,6 +9,7 @@
  * @file    FlexCAN_Module.c
  * @brief   Application entry point.
  */
+#include <can.h>
 #include <stdio.h>
 #include "board.h"
 #include "peripherals.h"
@@ -17,7 +18,6 @@
 #include "MIMXRT1064.h"
 #include "fsl_debug_console.h"
 /* TODO: insert other include files here. */
-#include "bsp_flexcan.h"
 /* TODO: insert other definitions and declarations here. */
 uint8_t cnt=0;
 uint8_t canbuf[8];
@@ -46,7 +46,7 @@ int main(void) {
     while(1){
 		res=0;
 
-		res=CAN2_Receive_Msg(rx_canbuf);
+		res=CAN_Receive_Msg(rx_canbuf);
 		if(res)
 		{
 			PRINTF("\r\n RECEIVE\r\n");
@@ -61,7 +61,7 @@ int main(void) {
 		{
 			canbuf[i]=cnt+i;
 		}
-		res=CAN2_Send_Msg(canbuf,8);
+		res=CAN_Send_Msg(canbuf,8);
 		if(!res)
 			PRINTF("SEND OK\r\n");
 		else

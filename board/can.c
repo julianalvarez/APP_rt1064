@@ -4,7 +4,7 @@
  *  Created on: 31 oct. 2023
  *      Author: PLANTIUM
  */
-#include "bsp_flexcan.h"
+#include <can.h>
 #include "peripherals.h"
 
 #define TX_MESSAGE_BUFFER_NUM (2)
@@ -19,7 +19,7 @@ flexcan_mb_transfer_t txXfer, rxXfer;
 flexcan_frame_t frame,can2_rxframe;
 volatile bool rxComplete = false;
 
-uint8_t CAN2_Send_Msg(uint8_t* msg,uint8_t len)
+uint8_t CAN_Send_Msg(uint8_t* msg,uint8_t len)
 {
 	uint8_t ret=0;
 
@@ -43,7 +43,7 @@ uint8_t CAN2_Send_Msg(uint8_t* msg,uint8_t len)
 	return ret;
 }
 
-uint8_t CAN2_Receive_Msg(uint8_t *buf)
+uint8_t CAN_Receive_Msg(uint8_t *buf)
 {
 	uint8_t datalen=0;
 
@@ -67,7 +67,7 @@ uint8_t CAN2_Receive_Msg(uint8_t *buf)
 	return datalen;
 }
 
-void BSP_FLEXCAN_ProcessIRQ(void)
+void CAN_ProcessIRQ(void)
 {
 	if (FLEXCAN_GetMbStatusFlags(TS_CAN,1<<RX_MESSAGE_BUFFER_NUM))
 	{
@@ -80,5 +80,5 @@ void BSP_FLEXCAN_ProcessIRQ(void)
 
 void BOARD_CAN2_FLEXCAN_IRQHANDLER(void)
 {
-	BSP_FLEXCAN_ProcessIRQ();
+	CAN_ProcessIRQ();
 }

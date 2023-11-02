@@ -414,9 +414,9 @@ Discarded input sections
  .debug_macro   0x00000000      0xaf6 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x10 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000      0x12e ./source/FlexCAN_Module.o
+ .debug_macro   0x00000000      0x5b3 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x16 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x22 ./source/FlexCAN_Module.o
- .debug_macro   0x00000000      0x5b3 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x22 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x10 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x4d ./source/FlexCAN_Module.o
@@ -432,6 +432,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x7a ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0xb6 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000      0x24e ./source/FlexCAN_Module.o
+ .debug_macro   0x00000000      0x2ac ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x10 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000      0x160 ./source/FlexCAN_Module.o
  .debug_macro   0x00000000       0x7a ./source/FlexCAN_Module.o
@@ -1943,67 +1944,67 @@ Discarded input sections
  .debug_macro   0x00000000      0x2ac ./board/board.o
  .debug_macro   0x00000000       0x10 ./board/board.o
  .debug_macro   0x00000000      0x160 ./board/board.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .group         0x00000000        0xc ./board/bsp_flexcan.o
- .text          0x00000000        0x0 ./board/bsp_flexcan.o
- .data          0x00000000        0x0 ./board/bsp_flexcan.o
- .bss           0x00000000        0x0 ./board/bsp_flexcan.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .group         0x00000000        0xc ./board/can.o
+ .text          0x00000000        0x0 ./board/can.o
+ .data          0x00000000        0x0 ./board/can.o
+ .bss           0x00000000        0x0 ./board/can.o
  .bss.flexcanHandle
-                0x00000000      0x358 ./board/bsp_flexcan.o
+                0x00000000      0x358 ./board/can.o
  .bss.txIdentifier
-                0x00000000        0x4 ./board/bsp_flexcan.o
+                0x00000000        0x4 ./board/can.o
  .bss.rxIdentifier
-                0x00000000        0x4 ./board/bsp_flexcan.o
+                0x00000000        0x4 ./board/can.o
  .bss.txComplete
-                0x00000000        0x1 ./board/bsp_flexcan.o
- .bss.txXfer    0x00000000        0xc ./board/bsp_flexcan.o
- .bss.rxXfer    0x00000000        0xc ./board/bsp_flexcan.o
- .debug_macro   0x00000000      0xaf6 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x10 ./board/bsp_flexcan.o
- .debug_macro   0x00000000      0x12e ./board/bsp_flexcan.o
- .debug_macro   0x00000000      0x5b3 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x16 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x22 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x22 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x10 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x4d ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x1c ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x22 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0xfb ./board/bsp_flexcan.o
- .debug_macro   0x00000000     0x1313 ./board/bsp_flexcan.o
- .debug_macro   0x00000000      0x11f ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x22 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x22 ./board/bsp_flexcan.o
- .debug_macro   0x00000000    0x26964 ./board/bsp_flexcan.o
- .debug_macro   0x00000000      0x8ca ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x7a ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0xb6 ./board/bsp_flexcan.o
- .debug_macro   0x00000000      0x24e ./board/bsp_flexcan.o
- .debug_macro   0x00000000      0x101 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x16 ./board/bsp_flexcan.o
- .debug_macro   0x00000000       0x28 ./board/bsp_flexcan.o
+                0x00000000        0x1 ./board/can.o
+ .bss.txXfer    0x00000000        0xc ./board/can.o
+ .bss.rxXfer    0x00000000        0xc ./board/can.o
+ .debug_macro   0x00000000      0xaf6 ./board/can.o
+ .debug_macro   0x00000000       0x10 ./board/can.o
+ .debug_macro   0x00000000      0x12e ./board/can.o
+ .debug_macro   0x00000000      0x5b3 ./board/can.o
+ .debug_macro   0x00000000       0x16 ./board/can.o
+ .debug_macro   0x00000000       0x22 ./board/can.o
+ .debug_macro   0x00000000       0x22 ./board/can.o
+ .debug_macro   0x00000000       0x10 ./board/can.o
+ .debug_macro   0x00000000       0x4d ./board/can.o
+ .debug_macro   0x00000000       0x1c ./board/can.o
+ .debug_macro   0x00000000       0x22 ./board/can.o
+ .debug_macro   0x00000000       0xfb ./board/can.o
+ .debug_macro   0x00000000     0x1313 ./board/can.o
+ .debug_macro   0x00000000      0x11f ./board/can.o
+ .debug_macro   0x00000000       0x22 ./board/can.o
+ .debug_macro   0x00000000       0x22 ./board/can.o
+ .debug_macro   0x00000000    0x26964 ./board/can.o
+ .debug_macro   0x00000000      0x8ca ./board/can.o
+ .debug_macro   0x00000000       0x7a ./board/can.o
+ .debug_macro   0x00000000       0xb6 ./board/can.o
+ .debug_macro   0x00000000      0x24e ./board/can.o
+ .debug_macro   0x00000000      0x101 ./board/can.o
+ .debug_macro   0x00000000       0x16 ./board/can.o
+ .debug_macro   0x00000000       0x28 ./board/can.o
  .group         0x00000000        0xc ./board/clock_config.o
  .group         0x00000000        0xc ./board/clock_config.o
  .group         0x00000000        0xc ./board/clock_config.o
@@ -2065,7 +2066,6 @@ Discarded input sections
  .debug_macro   0x00000000       0x7a ./board/clock_config.o
  .debug_macro   0x00000000       0xb6 ./board/clock_config.o
  .debug_macro   0x00000000      0x24e ./board/clock_config.o
- .debug_macro   0x00000000      0x2a6 ./board/clock_config.o
  .debug_macro   0x00000000     0x1ba1 ./board/clock_config.o
  .group         0x00000000        0xc ./board/dcd.o
  .group         0x00000000        0xc ./board/dcd.o
@@ -2543,7 +2543,7 @@ LOAD ./component/serial_manager/fsl_component_serial_manager.o
 LOAD ./component/serial_manager/fsl_component_serial_port_uart.o
 LOAD ./component/lists/fsl_component_generic_list.o
 LOAD ./board/board.o
-LOAD ./board/bsp_flexcan.o
+LOAD ./board/can.o
 LOAD ./board/clock_config.o
 LOAD ./board/dcd.o
 LOAD ./board/peripherals.o
@@ -3000,13 +3000,13 @@ END GROUP
                 0x700049a4      0x34c ./board/board.o
                 0x700049a4                BOARD_ConfigMPU
  .text.CAN2_Send_Msg
-                0x70004cf0       0xb4 ./board/bsp_flexcan.o
+                0x70004cf0       0xb4 ./board/can.o
                 0x70004cf0                CAN2_Send_Msg
  .text.CAN2_Receive_Msg
-                0x70004da4       0x94 ./board/bsp_flexcan.o
+                0x70004da4       0x94 ./board/can.o
                 0x70004da4                CAN2_Receive_Msg
  .text.BSP_FLEXCAN_ProcessIRQ
-                0x70004e38       0x50 ./board/bsp_flexcan.o
+                0x70004e38       0x50 ./board/can.o
                 0x70004e38                BSP_FLEXCAN_ProcessIRQ
  .text.CLOCK_SetMux
                 0x70004e88       0x9c ./board/clock_config.o
@@ -3627,11 +3627,11 @@ END GROUP
                 0x7000704a       0x22 ./board/board.o
                 0x7000704a                BOARD_InitDebugConsole
  .text.FLEXCAN_GetMbStatusFlags
-                0x7000706c       0x60 ./board/bsp_flexcan.o
+                0x7000706c       0x60 ./board/can.o
  .text.FLEXCAN_ClearMbStatusFlags
-                0x700070cc       0x32 ./board/bsp_flexcan.o
+                0x700070cc       0x32 ./board/can.o
  .text.CAN2_IRQHandler
-                0x700070fe        0xc ./board/bsp_flexcan.o
+                0x700070fe        0xc ./board/can.o
                 0x700070fe                CAN2_IRQHandler
  .text._SDK_AtomicLocalClearAndSet4Byte
                 0x7000710a       0x50 ./board/clock_config.o
@@ -4053,10 +4053,10 @@ END GROUP
  .bss.s_lpuartIsr
                 0x200000fc       0x24 ./drivers/fsl_lpuart.o
                 0x200000fc                s_lpuartIsr
- .bss.frame     0x20000120       0x10 ./board/bsp_flexcan.o
+ .bss.frame     0x20000120       0x10 ./board/can.o
                 0x20000120                frame
  .bss.can2_rxframe
-                0x20000130       0x10 ./board/bsp_flexcan.o
+                0x20000130       0x10 ./board/can.o
                 0x20000130                can2_rxframe
  .bss.errno     0x20000140        0x4 c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(errno.o)
                 0x20000140                errno
@@ -4069,7 +4069,7 @@ END GROUP
  .bss.res       0x200001fa        0x1 ./source/FlexCAN_Module.o
                 0x200001fa                res
  .bss.rxComplete
-                0x200001fb        0x1 ./board/bsp_flexcan.o
+                0x200001fb        0x1 ./board/can.o
                 0x200001fb                rxComplete
  *(SORT_BY_ALIGNMENT(COMMON))
                 0x200001fc                . = ALIGN (0x4)
@@ -4185,7 +4185,7 @@ LOAD linker stubs
  .debug_info    0x00010c73      0xd49 ./component/serial_manager/fsl_component_serial_manager.o
  .debug_info    0x000119bc      0x518 ./component/serial_manager/fsl_component_serial_port_uart.o
  .debug_info    0x00011ed4     0x1009 ./board/board.o
- .debug_info    0x00012edd     0x1033 ./board/bsp_flexcan.o
+ .debug_info    0x00012edd     0x1033 ./board/can.o
  .debug_info    0x00013f10     0x1ad1 ./board/clock_config.o
  .debug_info    0x000159e1     0x176b ./board/peripherals.o
  .debug_info    0x0001714c      0x846 ./board/pin_mux.o
@@ -4208,7 +4208,7 @@ LOAD linker stubs
  .debug_abbrev  0x00001e39      0x2c5 ./component/serial_manager/fsl_component_serial_manager.o
  .debug_abbrev  0x000020fe      0x196 ./component/serial_manager/fsl_component_serial_port_uart.o
  .debug_abbrev  0x00002294      0x302 ./board/board.o
- .debug_abbrev  0x00002596      0x317 ./board/bsp_flexcan.o
+ .debug_abbrev  0x00002596      0x317 ./board/can.o
  .debug_abbrev  0x000028ad      0x33b ./board/clock_config.o
  .debug_abbrev  0x00002be8      0x394 ./board/peripherals.o
  .debug_abbrev  0x00002f7c      0x23b ./board/pin_mux.o
@@ -4249,7 +4249,7 @@ LOAD linker stubs
  .debug_aranges
                 0x000010c8       0x58 ./board/board.o
  .debug_aranges
-                0x00001120       0x48 ./board/bsp_flexcan.o
+                0x00001120       0x48 ./board/can.o
  .debug_aranges
                 0x00001168       0x80 ./board/clock_config.o
  .debug_aranges
@@ -4257,7 +4257,7 @@ LOAD linker stubs
  .debug_aranges
                 0x00001248       0x48 ./board/pin_mux.o
 
-.debug_macro    0x00000000    0x2e745
+.debug_macro    0x00000000    0x2e73f
  .debug_macro   0x00000000      0x142 ./xip/evkmimxrt1064_flexspi_nor_config.o
  .debug_macro   0x00000142      0xaf6 ./xip/evkmimxrt1064_flexspi_nor_config.o
  .debug_macro   0x00000c38       0x10 ./xip/evkmimxrt1064_flexspi_nor_config.o
@@ -4308,57 +4308,57 @@ LOAD linker stubs
  .debug_macro   0x0002b08b       0x16 ./utilities/fsl_str.o
  .debug_macro   0x0002b0a1       0x29 ./startup/startup_mimxrt1064.o
  .debug_macro   0x0002b0ca      0x1e5 ./source/FlexCAN_Module.o
- .debug_macro   0x0002b2af       0xd8 ./source/FlexCAN_Module.o
- .debug_macro   0x0002b387      0x2a6 ./source/FlexCAN_Module.o
- .debug_macro   0x0002b62d       0x16 ./source/FlexCAN_Module.o
- .debug_macro   0x0002b643      0x101 ./source/FlexCAN_Module.o
- .debug_macro   0x0002b744       0x28 ./source/FlexCAN_Module.o
- .debug_macro   0x0002b76c       0x3a ./source/FlexCAN_Module.o
- .debug_macro   0x0002b7a6       0x11 ./source/semihost_hardfault.o
- .debug_macro   0x0002b7b7      0x12d ./drivers/fsl_clock.o
- .debug_macro   0x0002b8e4      0x142 ./drivers/fsl_edma.o
- .debug_macro   0x0002ba26       0x10 ./drivers/fsl_edma.o
- .debug_macro   0x0002ba36      0x280 ./drivers/fsl_flexcan.o
- .debug_macro   0x0002bcb6       0xfb ./drivers/fsl_flexcan.o
- .debug_macro   0x0002bdb1      0x13c ./drivers/fsl_lpuart.o
- .debug_macro   0x0002beed       0x10 ./drivers/fsl_lpuart.o
- .debug_macro   0x0002befd       0xb3 ./device/system_MIMXRT1064.o
- .debug_macro   0x0002bfb0      0x15b ./component/uart/fsl_adapter_lpuart.o
- .debug_macro   0x0002c10b       0x41 ./component/uart/fsl_adapter_lpuart.o
- .debug_macro   0x0002c14c      0x1ac ./component/serial_manager/fsl_component_serial_manager.o
- .debug_macro   0x0002c2f8       0x74 ./component/serial_manager/fsl_component_serial_manager.o
- .debug_macro   0x0002c36c      0x16a ./component/serial_manager/fsl_component_serial_port_uart.o
- .debug_macro   0x0002c4d6      0x199 ./board/board.o
- .debug_macro   0x0002c66f     0x1ba1 ./board/board.o
- .debug_macro   0x0002e210      0x16e ./board/bsp_flexcan.o
- .debug_macro   0x0002e37e      0x13f ./board/clock_config.o
- .debug_macro   0x0002e4bd      0x14c ./board/peripherals.o
- .debug_macro   0x0002e609      0x13c ./board/pin_mux.o
+ .debug_macro   0x0002b2af      0x101 ./source/FlexCAN_Module.o
+ .debug_macro   0x0002b3b0       0xd2 ./source/FlexCAN_Module.o
+ .debug_macro   0x0002b482       0x16 ./source/FlexCAN_Module.o
+ .debug_macro   0x0002b498       0x28 ./source/FlexCAN_Module.o
+ .debug_macro   0x0002b4c0       0x3a ./source/FlexCAN_Module.o
+ .debug_macro   0x0002b4fa       0x11 ./source/semihost_hardfault.o
+ .debug_macro   0x0002b50b      0x12d ./drivers/fsl_clock.o
+ .debug_macro   0x0002b638      0x142 ./drivers/fsl_edma.o
+ .debug_macro   0x0002b77a       0x10 ./drivers/fsl_edma.o
+ .debug_macro   0x0002b78a      0x280 ./drivers/fsl_flexcan.o
+ .debug_macro   0x0002ba0a       0xfb ./drivers/fsl_flexcan.o
+ .debug_macro   0x0002bb05      0x13c ./drivers/fsl_lpuart.o
+ .debug_macro   0x0002bc41       0x10 ./drivers/fsl_lpuart.o
+ .debug_macro   0x0002bc51       0xb3 ./device/system_MIMXRT1064.o
+ .debug_macro   0x0002bd04      0x15b ./component/uart/fsl_adapter_lpuart.o
+ .debug_macro   0x0002be5f       0x41 ./component/uart/fsl_adapter_lpuart.o
+ .debug_macro   0x0002bea0      0x1ac ./component/serial_manager/fsl_component_serial_manager.o
+ .debug_macro   0x0002c04c       0x74 ./component/serial_manager/fsl_component_serial_manager.o
+ .debug_macro   0x0002c0c0      0x16a ./component/serial_manager/fsl_component_serial_port_uart.o
+ .debug_macro   0x0002c22a      0x199 ./board/board.o
+ .debug_macro   0x0002c3c3     0x1ba1 ./board/board.o
+ .debug_macro   0x0002df64      0x16e ./board/can.o
+ .debug_macro   0x0002e0d2      0x13f ./board/clock_config.o
+ .debug_macro   0x0002e211      0x2a6 ./board/clock_config.o
+ .debug_macro   0x0002e4b7      0x14c ./board/peripherals.o
+ .debug_macro   0x0002e603      0x13c ./board/pin_mux.o
 
-.debug_line     0x00000000     0xd6a2
+.debug_line     0x00000000     0xd6df
  .debug_line    0x00000000      0x3d2 ./xip/evkmimxrt1064_flexspi_nor_config.o
  .debug_line    0x000003d2      0x43a ./xip/fsl_flexspi_nor_boot.o
  .debug_line    0x0000080c      0x4fc ./utilities/fsl_assert.o
  .debug_line    0x00000d08      0x920 ./utilities/fsl_debug_console.o
  .debug_line    0x00001628      0xb5b ./utilities/fsl_str.o
  .debug_line    0x00002183     0x11a5 ./startup/startup_mimxrt1064.o
- .debug_line    0x00003328      0x6c4 ./source/FlexCAN_Module.o
- .debug_line    0x000039ec       0x59 ./source/semihost_hardfault.o
- .debug_line    0x00003a45     0x11c0 ./drivers/fsl_clock.o
- .debug_line    0x00004c05     0x15ac ./drivers/fsl_edma.o
- .debug_line    0x000061b1     0x24cd ./drivers/fsl_flexcan.o
- .debug_line    0x0000867e     0x150f ./drivers/fsl_lpuart.o
- .debug_line    0x00009b8d      0x50b ./device/system_MIMXRT1064.o
- .debug_line    0x0000a098      0x5a9 ./component/uart/fsl_adapter_lpuart.o
- .debug_line    0x0000a641      0x80b ./component/serial_manager/fsl_component_serial_manager.o
- .debug_line    0x0000ae4c      0x5c6 ./component/serial_manager/fsl_component_serial_port_uart.o
- .debug_line    0x0000b412      0x9bd ./board/board.o
- .debug_line    0x0000bdcf      0x525 ./board/bsp_flexcan.o
- .debug_line    0x0000c2f4      0x9cd ./board/clock_config.o
- .debug_line    0x0000ccc1      0x527 ./board/peripherals.o
- .debug_line    0x0000d1e8      0x4ba ./board/pin_mux.o
+ .debug_line    0x00003328      0x6bc ./source/FlexCAN_Module.o
+ .debug_line    0x000039e4       0x59 ./source/semihost_hardfault.o
+ .debug_line    0x00003a3d     0x11c0 ./drivers/fsl_clock.o
+ .debug_line    0x00004bfd     0x15ac ./drivers/fsl_edma.o
+ .debug_line    0x000061a9     0x24cd ./drivers/fsl_flexcan.o
+ .debug_line    0x00008676     0x150f ./drivers/fsl_lpuart.o
+ .debug_line    0x00009b85      0x50b ./device/system_MIMXRT1064.o
+ .debug_line    0x0000a090      0x5a9 ./component/uart/fsl_adapter_lpuart.o
+ .debug_line    0x0000a639      0x80b ./component/serial_manager/fsl_component_serial_manager.o
+ .debug_line    0x0000ae44      0x5c6 ./component/serial_manager/fsl_component_serial_port_uart.o
+ .debug_line    0x0000b40a      0x9bd ./board/board.o
+ .debug_line    0x0000bdc7      0x56a ./board/can.o
+ .debug_line    0x0000c331      0x9cd ./board/clock_config.o
+ .debug_line    0x0000ccfe      0x527 ./board/peripherals.o
+ .debug_line    0x0000d225      0x4ba ./board/pin_mux.o
 
-.debug_str      0x00000000   0x16f1e5
+.debug_str      0x00000000   0x16f1dd
  .debug_str     0x00000000   0x14dc27 ./xip/evkmimxrt1064_flexspi_nor_config.o
                              0x14dcb6 (size before relaxing)
  .debug_str     0x0014dc27     0x1f74 ./xip/fsl_flexspi_nor_boot.o
@@ -4393,13 +4393,13 @@ LOAD linker stubs
                              0x14d410 (size before relaxing)
  .debug_str     0x0015c096    0x12bbf ./board/board.o
                              0x1620b3 (size before relaxing)
- .debug_str     0x0016ec55       0xc1 ./board/bsp_flexcan.o
-                             0x14e528 (size before relaxing)
- .debug_str     0x0016ed16      0x3b9 ./board/clock_config.o
+ .debug_str     0x0016ec55       0xb9 ./board/can.o
+                             0x14e520 (size before relaxing)
+ .debug_str     0x0016ed0e      0x3b9 ./board/clock_config.o
                              0x1621b5 (size before relaxing)
- .debug_str     0x0016f0cf       0x9a ./board/peripherals.o
+ .debug_str     0x0016f0c7       0x9a ./board/peripherals.o
                              0x14f47f (size before relaxing)
- .debug_str     0x0016f169       0x7c ./board/pin_mux.o
+ .debug_str     0x0016f161       0x7c ./board/pin_mux.o
                              0x15f919 (size before relaxing)
 
 .comment        0x00000000       0x45
@@ -4421,7 +4421,7 @@ LOAD linker stubs
  .comment       0x00000045       0x46 ./component/serial_manager/fsl_component_serial_manager.o
  .comment       0x00000045       0x46 ./component/serial_manager/fsl_component_serial_port_uart.o
  .comment       0x00000045       0x46 ./board/board.o
- .comment       0x00000045       0x46 ./board/bsp_flexcan.o
+ .comment       0x00000045       0x46 ./board/can.o
  .comment       0x00000045       0x46 ./board/clock_config.o
  .comment       0x00000045       0x46 ./board/peripherals.o
  .comment       0x00000045       0x46 ./board/pin_mux.o
@@ -4489,7 +4489,7 @@ LOAD linker stubs
  .ARM.attributes
                 0x00000340       0x34 ./board/board.o
  .ARM.attributes
-                0x00000374       0x34 ./board/bsp_flexcan.o
+                0x00000374       0x34 ./board/can.o
  .ARM.attributes
                 0x000003a8       0x34 ./board/clock_config.o
  .ARM.attributes
@@ -4588,7 +4588,7 @@ LOAD linker stubs
  .debug_rnglists
                 0x00000cb8       0x3e ./board/board.o
  .debug_rnglists
-                0x00000cf6       0x33 ./board/bsp_flexcan.o
+                0x00000cf6       0x33 ./board/can.o
  .debug_rnglists
                 0x00000d29       0x5f ./board/clock_config.o
  .debug_rnglists
@@ -4612,7 +4612,7 @@ LOAD linker stubs
  .debug_frame   0x00003ae4      0x280 ./component/serial_manager/fsl_component_serial_manager.o
  .debug_frame   0x00003d64       0xe8 ./component/serial_manager/fsl_component_serial_port_uart.o
  .debug_frame   0x00003e4c      0x13c ./board/board.o
- .debug_frame   0x00003f88       0xf4 ./board/bsp_flexcan.o
+ .debug_frame   0x00003f88       0xf4 ./board/can.o
  .debug_frame   0x0000407c      0x1fc ./board/clock_config.o
  .debug_frame   0x00004278      0x14c ./board/peripherals.o
  .debug_frame   0x000043c4       0xe8 ./board/pin_mux.o
@@ -4665,18 +4665,18 @@ BOARD_InitDebugConsole                            ./board/board.o
 BOARD_InitPeripherals                             ./board/peripherals.o
 BOARD_InitPins                                    ./board/pin_mux.o
 BOARD_LPUART1_config                              ./board/peripherals.o
-BSP_FLEXCAN_ProcessIRQ                            ./board/bsp_flexcan.o
+BSP_FLEXCAN_ProcessIRQ                            ./board/can.o
 BusFault_Handler                                  ./startup/startup_mimxrt1064.o
 CAN1_DriverIRQHandler                             ./drivers/fsl_flexcan.o
                                                   ./startup/startup_mimxrt1064.o
 CAN1_IRQHandler                                   ./startup/startup_mimxrt1064.o
 CAN2_DriverIRQHandler                             ./drivers/fsl_flexcan.o
                                                   ./startup/startup_mimxrt1064.o
-CAN2_IRQHandler                                   ./board/bsp_flexcan.o
+CAN2_IRQHandler                                   ./board/can.o
                                                   ./startup/startup_mimxrt1064.o
-CAN2_Receive_Msg                                  ./board/bsp_flexcan.o
+CAN2_Receive_Msg                                  ./board/can.o
                                                   ./source/FlexCAN_Module.o
-CAN2_Send_Msg                                     ./board/bsp_flexcan.o
+CAN2_Send_Msg                                     ./board/can.o
                                                   ./source/FlexCAN_Module.o
 CAN3_DriverIRQHandler                             ./drivers/fsl_flexcan.o
                                                   ./startup/startup_mimxrt1064.o
@@ -4907,7 +4907,7 @@ FLEXCAN_PrepareTransfConfiguration                ./drivers/fsl_flexcan_edma.o
 FLEXCAN_ReadFDRxMb                                ./drivers/fsl_flexcan.o
 FLEXCAN_ReadRxFifo                                ./drivers/fsl_flexcan.o
 FLEXCAN_ReadRxMb                                  ./drivers/fsl_flexcan.o
-                                                  ./board/bsp_flexcan.o
+                                                  ./board/can.o
 FLEXCAN_SetBitRate                                ./drivers/fsl_flexcan.o
 FLEXCAN_SetFDBitRate                              ./drivers/fsl_flexcan.o
 FLEXCAN_SetFDRxMbConfig                           ./drivers/fsl_flexcan.o
@@ -4944,7 +4944,7 @@ FLEXCAN_TransferReceiveFifoEDMA                   ./drivers/fsl_flexcan_edma.o
 FLEXCAN_TransferReceiveFifoNonBlocking            ./drivers/fsl_flexcan.o
 FLEXCAN_TransferReceiveNonBlocking                ./drivers/fsl_flexcan.o
 FLEXCAN_TransferSendBlocking                      ./drivers/fsl_flexcan.o
-                                                  ./board/bsp_flexcan.o
+                                                  ./board/can.o
 FLEXCAN_TransferSendNonBlocking                   ./drivers/fsl_flexcan.o
 FLEXCAN_WriteFDTxMb                               ./drivers/fsl_flexcan.o
 FLEXCAN_WriteTxMb                                 ./drivers/fsl_flexcan.o
@@ -5457,7 +5457,7 @@ atol                                              c:/nxp/mcuxpressoide_11.8.0_11
 atoll                                             c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(scanf.o)
 bss_init                                          ./startup/startup_mimxrt1064.o
 calloc                                            c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(alloc.o)
-can2_rxframe                                      ./board/bsp_flexcan.o
+can2_rxframe                                      ./board/can.o
 canbuf                                            ./source/FlexCAN_Module.o
 cnt                                               ./source/FlexCAN_Module.o
 data_init                                         ./startup/startup_mimxrt1064.o
@@ -5473,8 +5473,8 @@ fclose                                            c:/nxp/mcuxpressoide_11.8.0_11
                                                   c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(initio.o)
 fflush                                            c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(fflush.o)
                                                   c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(fclose.o)
-flexcanHandle                                     ./board/bsp_flexcan.o
-frame                                             ./board/bsp_flexcan.o
+flexcanHandle                                     ./board/can.o
+frame                                             ./board/can.o
 free                                              c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(alloc.o)
                                                   c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(fclose.o)
                                                   ./drivers/fsl_common.o
@@ -5529,9 +5529,9 @@ remove                                            c:/nxp/mcuxpressoide_11.8.0_11
                                                   c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(fclose.o)
 rename                                            c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(remove.o)
 res                                               ./source/FlexCAN_Module.o
-rxComplete                                        ./board/bsp_flexcan.o
-rxIdentifier                                      ./board/bsp_flexcan.o
-rxXfer                                            ./board/bsp_flexcan.o
+rxComplete                                        ./board/can.o
+rxIdentifier                                      ./board/can.o
+rxXfer                                            ./board/can.o
 rx_canbuf                                         ./source/FlexCAN_Module.o
 s_lpuartHandle                                    ./drivers/fsl_lpuart.o
 s_lpuartIRQ                                       ./drivers/fsl_lpuart.o
@@ -5555,9 +5555,9 @@ sysPllConfig_BOARD_BootClockRUN                   ./board/clock_config.o
 sysPllConfig_BOARD_BootClockRUN_528M              ./board/clock_config.o
 tolower                                           c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(ctype.o)
 toupper                                           c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(ctype.o)
-txComplete                                        ./board/bsp_flexcan.o
-txIdentifier                                      ./board/bsp_flexcan.o
-txXfer                                            ./board/bsp_flexcan.o
+txComplete                                        ./board/can.o
+txIdentifier                                      ./board/can.o
+txXfer                                            ./board/can.o
 ungetc                                            c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(ungetc.o)
                                                   c:/nxp/mcuxpressoide_11.8.0_1165/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.8.0.202306131047/tools/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libcr_c.a(scanf.o)
 usb1PllConfig_BOARD_BootClockRUN                  ./board/clock_config.o
