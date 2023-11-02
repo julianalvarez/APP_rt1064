@@ -815,7 +815,7 @@
                   </instance>
                   <instance name="CAN2" uuid="67953374-0f3e-4b2d-97f2-c8d451eaf41a" type="flexcan" type_id="flexcan_5cab76b676858377b40de2b864152fd8" mode="interrupts" peripheral="CAN2" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="interruptsCfg">
-                        <setting name="messageBufferIrqs" value="0"/>
+                        <setting name="messageBufferIrqs" value="2"/>
                         <setting name="messageBufferIrqs2" value="0"/>
                         <set name="interruptsEnable">
                            <selected/>

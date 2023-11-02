@@ -156,7 +156,7 @@ instance:
 - peripheral: 'CAN2'
 - config_sets:
   - interruptsCfg:
-    - messageBufferIrqs: '0'
+    - messageBufferIrqs: '2'
     - messageBufferIrqs2: '0'
     - interruptsEnable: ''
     - enable_irq: 'true'
@@ -236,16 +236,15 @@ const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1 = {
 };
 
 static void BOARD_CAN2_init(void) {
-
-	FLEXCAN_Init(BOARD_CAN2_PERIPHERAL, &BOARD_CAN2_config, BOARD_CAN2_CLOCK_SOURCE);
-
-	FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 1U << 1U);
-	/* Message buffer 1 initialization */
-	FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &BOARD_CAN2_rx_mb_config_1, true);
-	/* Message buffer 2 initialization */
-	FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
-	/* Enable interrupt CAN2_IRQn request in the NVIC. */
-	EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
+  FLEXCAN_Init(BOARD_CAN2_PERIPHERAL, &BOARD_CAN2_config, BOARD_CAN2_CLOCK_SOURCE);
+  /* Message buffer 1 initialization */
+  FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &BOARD_CAN2_rx_mb_config_1, true);
+  /* Message buffer 2 initialization */
+  FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
+  /* Enable FlexCAN interrupts of message buffers */
+  FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 2ULL);
+  /* Enable interrupt CAN2_IRQn request in the NVIC. */
+  EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
 }
 
 /***********************************************************************************************************************
