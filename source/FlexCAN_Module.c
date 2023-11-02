@@ -51,21 +51,16 @@ int main(void) {
 		{
 			PRINTF("\r\n RECEIVE\r\n");
 			for(i=0;i<res;i++){
+				canbuf[i]=rx_canbuf[i];
 				PRINTF("%x",rx_canbuf[i]);
 				PRINTF("\r\n");
 			}
-
+			res=CAN_Send_Msg(canbuf,8);
+			if(!res)
+				PRINTF("SEND OK\r\n");
+			else
+				PRINTF("SEND ERROR\r\n");
 		}
-
-		for(i=0;i<8;i++)
-		{
-			canbuf[i]=cnt+i;
-		}
-		res=CAN_Send_Msg(canbuf,8);
-		if(!res)
-			PRINTF("SEND OK\r\n");
-		else
-			PRINTF("SEND ERROR\r\n");
 
 		for (i = 0; i < 40000000U; i++)
 		{
