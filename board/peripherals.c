@@ -197,8 +197,8 @@ instance:
         - mbID: '1'
         - mbType: 'mbRx'
         - rxMb:
-          - id: '0x124'
-          - format: 'kFLEXCAN_FrameFormatStandard'
+          - id: '0'
+          - format: 'kFLEXCAN_FrameFormatExtend'
           - type: 'kFLEXCAN_FrameTypeData'
       - 1:
         - mbID: '2'
@@ -230,8 +230,8 @@ const flexcan_config_t BOARD_CAN2_config = {
 };
 /* Message buffer 1 configuration structure */
 const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1 = {
-  .id = FLEXCAN_ID_STD(0),
-  .format = kFLEXCAN_FrameFormatStandard,
+  .id = FLEXCAN_ID_EXT(0),
+  .format = kFLEXCAN_FrameFormatExtend,
   .type = kFLEXCAN_FrameTypeData
 };
 
@@ -247,6 +247,7 @@ static void BOARD_CAN2_init(void) {
   EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
 
   FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_STD_MASK(0, 0, 0));
+
 }
 
 /***********************************************************************************************************************

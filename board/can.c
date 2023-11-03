@@ -24,9 +24,9 @@ uint8_t CAN_Send_Msg(uint8_t* msg,uint8_t len)
 {
 	uint8_t ret=0;
 
-	frame.format=kFLEXCAN_FrameFormatStandard;
+	frame.format=kFLEXCAN_FrameFormatExtend;
 	frame.type=kFLEXCAN_FrameTypeData;
-	frame.id=FLEXCAN_ID_STD(0x123);
+	frame.id=FLEXCAN_ID_EXT(0x18FFF6E6);
 	frame.length=len;
 
 	frame.dataByte0=msg[0];
@@ -73,7 +73,8 @@ void CAN_ProcessIRQ(void)
 	{
 		FLEXCAN_ClearMbStatusFlags(CAN2,1<<RX_MESSAGE_BUFFER_NUM);
 		FLEXCAN_ReadRxMb(TS_CAN,RX_MESSAGE_BUFFER_NUM,&can2_rxframe);
-		if(can2_rxframe.id == FLEXCAN_RX_MB_STD_MASK(0x124, 0, 0))
+
+		if(can2_rxframe.id == FLEXCAN_RX_MB_EXT_MASK(0x18FFF680, 0, 0))
 		{
 			rxComplete=true;
 		}
