@@ -19,10 +19,13 @@
 #include "fsl_debug_console.h"
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
+
+
 uint8_t cnt=0;
 uint8_t canbuf[8];
 uint8_t rx_canbuf[8];
 uint8_t res;
+
 /*
  * @brief   Application entry point.
  */
@@ -45,22 +48,34 @@ int main(void) {
     /* Enter an infinite loop, just incrementing a counter. */
     while(1){
 		res=0;
-
-		res=CAN_Receive_Msg(rx_canbuf);
-		if(res)
-		{
-			PRINTF("\r\n RECEIVE\r\n");
-			for(i=0;i<res;i++){
-				canbuf[i]=rx_canbuf[i];
-				PRINTF("%x",rx_canbuf[i]);
-				PRINTF("\r\n");
-			}
-			res=CAN_Send_Msg(canbuf,8);
-			if(!res)
-				PRINTF("SEND OK\r\n");
-			else
-				PRINTF("SEND ERROR\r\n");
-		}
+    	switch(CAN_GetMode()){
+    		case MODE_AT_START:
+    			res=CAN_Receive_Msg(rx_canbuf);
+    			if(res)
+    			{
+    				PRINTF("\r\n RECEIVE\r\n");
+    				for(i=0;i<res;i++){
+    					canbuf[i]=rx_canbuf[i];
+    					PRINTF("%x",rx_canbuf[i]);
+    					PRINTF("\r\n");
+    				}
+    				res=CAN_Send_Msg(canbuf,8);
+    				if(!res)
+    					PRINTF("SEND OK\r\n");
+    				else
+    					PRINTF("SEND ERROR\r\n");
+    			}
+    			break;
+    		case MODE_PERIODIC:
+				res=CAN_Send_Msg(canbuf,8);
+				if(!res)
+					PRINTF("SEND OK\r\n");
+				else
+					PRINTF("SEND ERROR\r\n");
+    			break;
+    		default:
+    			break;
+    	}
 
 		for (i = 0; i < 40000000U; i++)
 		{
@@ -70,3 +85,4 @@ int main(void) {
     }
     return 0 ;
 }
+

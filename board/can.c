@@ -20,6 +20,8 @@ flexcan_mb_transfer_t txXfer, rxXfer;
 flexcan_frame_t frame,can2_rxframe;
 volatile bool rxComplete = false;
 
+uint8_t mode = MODE_AT_START;
+
 uint8_t CAN_Send_Msg(uint8_t* msg,uint8_t len)
 {
 	uint8_t ret=0;
@@ -67,6 +69,16 @@ uint8_t CAN_Receive_Msg(uint8_t *buf)
 	return datalen;
 }
 
+void CAN_SetMode (uint8_t value)
+{
+	mode = value;
+}
+
+uint8_t CAN_GetMode (void)
+{
+	return mode;
+}
+
 void CAN_ProcessIRQ(void)
 {
 	if (FLEXCAN_GetMbStatusFlags(TS_CAN,1<<RX_MESSAGE_BUFFER_NUM))
@@ -76,6 +88,14 @@ void CAN_ProcessIRQ(void)
 
 		if(can2_rxframe.id == FLEXCAN_RX_MB_EXT_MASK(0x18FFF680, 0, 0))
 		{
+			if(can2_rxframe.dataByte0 == 1.0)
+			{
+				CAN_SetMode(MODE_PERIODIC);
+			}
+			else
+			{
+				CAN_SetMode(MODE_AT_START);
+			}
 			rxComplete=true;
 		}
 	}
