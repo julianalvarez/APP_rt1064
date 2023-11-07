@@ -17,6 +17,7 @@
 #include "clock_config.h"
 #include "MIMXRT1064.h"
 #include "fsl_debug_console.h"
+#include "can_ext.h"
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
 
@@ -26,6 +27,7 @@ uint8_t canbuf[8];
 uint8_t rx_canbuf[8];
 uint8_t res;
 
+tSend msg;
 /*
  * @brief   Application entry point.
  */
@@ -33,9 +35,15 @@ int main(void) {
 
     /* Init board hardware. */
     BOARD_ConfigMPU();
-    BOARD_InitBootPins();
+
+    BOARD_Clock_Enable();
+	BOARD_InitPinsLPUART();
+
     BOARD_InitBootClocks();
-    BOARD_InitBootPeripherals();
+    BOARD_InitLPUART1();
+
+    init_can(0, 0, 0, 0, 250000/1000);
+
 #ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
     /* Init FSL debug console. */
     BOARD_InitDebugConsole();
@@ -48,18 +56,23 @@ int main(void) {
     /* Enter an infinite loop, just incrementing a counter. */
     while(1){
 		res=0;
+		res=CAN_Receive_Msg(rx_canbuf);
     	switch(CAN_GetMode()){
     		case MODE_AT_START:
-    			res=CAN_Receive_Msg(rx_canbuf);
     			if(res)
     			{
     				PRINTF("\r\n RECEIVE\r\n");
     				for(i=0;i<res;i++){
-    					canbuf[i]=rx_canbuf[i];
+    					msg.abData[i]=rx_canbuf[i];
     					PRINTF("%x",rx_canbuf[i]);
     					PRINTF("\r\n");
     				}
-    				res=CAN_Send_Msg(canbuf,8);
+
+    				msg.bDlc = 8;
+    				msg.bXtd = kFLEXCAN_FrameFormatExtend;
+    				msg.dwId = 0;
+    				res = send_can_msg(0, 0, &msg);
+    				//res=CAN_Send_Msg(msg,8);
     				if(!res)
     					PRINTF("SEND OK\r\n");
     				else
@@ -67,7 +80,14 @@ int main(void) {
     			}
     			break;
     		case MODE_PERIODIC:
-				res=CAN_Send_Msg(canbuf,8);
+				msg.bDlc = 8;
+				msg.bXtd = kFLEXCAN_FrameFormatExtend;
+				msg.dwId = 0;
+				for(i=0;i<res;i++){
+					msg.abData[i]=rx_canbuf[i];
+				}
+				res = send_can_msg(0, 0, &msg);
+				//res=CAN_Send_Msg(canbuf,8);
 				if(!res)
 					PRINTF("SEND OK\r\n");
 				else

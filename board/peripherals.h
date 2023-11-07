@@ -53,6 +53,8 @@ void BOARD_InitPeripherals(void);
  * BOARD_InitBootPeripherals function
  **********************************************************************************************************************/
 void BOARD_InitBootPeripherals(void);
+void BOARD_InitLPUART1(void);
+void BOARD_InitFLEXCAN(uint16_t wBitrate);
 
 #if defined(__cplusplus)
 }

@@ -218,9 +218,6 @@ pin_labels:
  * Description   : Calls initialization functions.
  * 
  * END ****************************************************************************************************************/
-void BOARD_InitBootPins(void) {
-    BOARD_InitPins();
-}
 
 /*
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
@@ -240,13 +237,18 @@ BOARD_InitPins:
  * Description   : Configures pin routing and optionally pin electrical features.
  *
  * END ****************************************************************************************************************/
-void BOARD_InitPins(void) {
-  CLOCK_EnableClock(kCLOCK_Iomuxc);           
+ void BOARD_Clock_Enable(void) {
+	CLOCK_EnableClock(kCLOCK_Iomuxc);
+ }
 
-  IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_12_LPUART1_TX, 0U); 
-  IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_13_LPUART1_RX, 0U); 
-  IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_14_FLEXCAN2_TX, 0U); 
-  IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_15_FLEXCAN2_RX, 0U); 
+ void BOARD_InitPinsFlexCAN(void) {
+	IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_14_FLEXCAN2_TX, 0U);
+	IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_15_FLEXCAN2_RX, 0U);
+ }
+
+void BOARD_InitPinsLPUART(void) {
+	IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_12_LPUART1_TX, 0U);
+	IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_13_LPUART1_RX, 0U);
 }
 
 /***********************************************************************************************************************

@@ -6,6 +6,7 @@
 C_SRCS += \
 ../board/board.c \
 ../board/can.c \
+../board/can_ext.c \
 ../board/clock_config.c \
 ../board/dcd.c \
 ../board/peripherals.c \
@@ -14,6 +15,7 @@ C_SRCS += \
 C_DEPS += \
 ./board/board.d \
 ./board/can.d \
+./board/can_ext.d \
 ./board/clock_config.d \
 ./board/dcd.d \
 ./board/peripherals.d \
@@ -22,6 +24,7 @@ C_DEPS += \
 OBJS += \
 ./board/board.o \
 ./board/can.o \
+./board/can_ext.o \
 ./board/clock_config.o \
 ./board/dcd.o \
 ./board/peripherals.o \
@@ -40,7 +43,7 @@ board/%.o: ../board/%.c board/subdir.mk
 clean: clean-board
 
 clean-board:
-	-$(RM) ./board/board.d ./board/board.o ./board/can.d ./board/can.o ./board/clock_config.d ./board/clock_config.o ./board/dcd.d ./board/dcd.o ./board/peripherals.d ./board/peripherals.o ./board/pin_mux.d ./board/pin_mux.o
+	-$(RM) ./board/board.d ./board/board.o ./board/can.d ./board/can.o ./board/can_ext.d ./board/can_ext.o ./board/clock_config.d ./board/clock_config.o ./board/dcd.d ./board/dcd.o ./board/peripherals.d ./board/peripherals.o ./board/pin_mux.d ./board/pin_mux.o
 
 .PHONY: clean-board
 

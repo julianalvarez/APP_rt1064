@@ -17,11 +17,11 @@ uint32_t txIdentifier;
 uint32_t rxIdentifier;
 volatile bool txComplete = false;
 flexcan_mb_transfer_t txXfer, rxXfer;
-flexcan_frame_t frame,can2_rxframe;
+flexcan_frame_t can2_rxframe;
 volatile bool rxComplete = false;
 
 uint8_t mode = MODE_AT_START;
-
+/*
 uint8_t CAN_Send_Msg(uint8_t* msg,uint8_t len)
 {
 	uint8_t ret=0;
@@ -46,6 +46,17 @@ uint8_t CAN_Send_Msg(uint8_t* msg,uint8_t len)
 	return ret;
 }
 
+void CAN_wrMsg (uint32_t ctrl, CAN_msg *msg)
+{
+    if(ctrl == 0)
+    {
+    	FLEXCAN_TransferSendBlocking(TS_CAN,TX_MESSAGE_BUFFER_NUM,&frame);
+    }
+    else{
+    	//Completar para otro periferico CAN
+    }
+}
+*/
 uint8_t CAN_Receive_Msg(uint8_t *buf)
 {
 	uint8_t datalen=0;

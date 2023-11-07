@@ -235,31 +235,38 @@ const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1 = {
   .type = kFLEXCAN_FrameTypeData
 };
 
-static void BOARD_CAN2_init(void) {
-  FLEXCAN_Init(BOARD_CAN2_PERIPHERAL, &BOARD_CAN2_config, BOARD_CAN2_CLOCK_SOURCE);
-  /* Message buffer 1 initialization */
-  FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &BOARD_CAN2_rx_mb_config_1, true);
-  /* Message buffer 2 initialization */
-  FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
-  /* Enable FlexCAN interrupts of message buffers */
-  FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 2ULL);
-  /* Enable interrupt CAN2_IRQn request in the NVIC. */
-  EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
+static void BOARD_CAN2_init(uint16_t wBitrate) {
+	flexcan_config_t _config;
+	_config = BOARD_CAN2_config;
+	_config.bitRate = wBitrate*1000;
 
-  FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_STD_MASK(0, 0, 0));
+	FLEXCAN_Init(BOARD_CAN2_PERIPHERAL, &_config, BOARD_CAN2_CLOCK_SOURCE);
+	/* Message buffer 1 initialization */
+	FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &BOARD_CAN2_rx_mb_config_1, true);
+	/* Message buffer 2 initialization */
+	FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
+	/* Enable FlexCAN interrupts of message buffers */
+	FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 2ULL);
+	/* Enable interrupt CAN2_IRQn request in the NVIC. */
+	EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
 
+	FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_STD_MASK(0, 0, 0));
 }
 
 /***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
-void BOARD_InitPeripherals(void)
+void BOARD_InitLPUART1(void)
 {
   /* Initialize components */
   BOARD_LPUART1_init();
-  BOARD_CAN2_init();
 }
 
+void BOARD_InitFLEXCAN(uint16_t wBitrate)
+{
+  /* Initialize components */
+  BOARD_CAN2_init(wBitrate);
+}
 /***********************************************************************************************************************
  * BOARD_InitBootPeripherals function
  **********************************************************************************************************************/

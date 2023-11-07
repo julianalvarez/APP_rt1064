@@ -35,7 +35,9 @@ extern "C" {
  * @brief Calls initialization functions.
  *
  */
-void BOARD_InitBootPins(void);
+void BOARD_Clock_Enable(void);
+void BOARD_InitPinsFlexCAN(void);
+void BOARD_InitPinsLPUART(void);
 
 /* GPIO_AD_B0_15 (coord L10), CAN2_RX/U12[4] */
 /* Routed pin properties */
@@ -61,7 +63,6 @@ void BOARD_InitBootPins(void);
  * @brief Configures pin routing and optionally pin electrical features.
  *
  */
-void BOARD_InitPins(void);
 
 #if defined(__cplusplus)
 }
