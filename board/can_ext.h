@@ -52,8 +52,6 @@ typedef struct tagCAN_MSG {
 int32_t                 init_can (uint8_t bBusNumber,uint16_t wGlobMask, uint32_t dwGlobMask,uint32_t dwGlobMaskLastmsg, uint16_t wBitrate);
 int32_t                 send_can_msg (uint8_t bBusNumber,uint8_t bMsgObj, tSend *ptSend );
 uint8_t 				CAN_Receive_Msg(CAN_msg *buf);
-void 					CAN_ProcessIRQ(void);
-void 					CAN_rdMsg (uint32_t ctrl, CAN_msg *msg);
 
 void 					CAN_SetMode(uint8_t value);
 uint8_t 				CAN_GetMode (void);

@@ -17,20 +17,21 @@
 #include "MIMXRT1064.h"
 #include "fsl_debug_console.h"
 #include "can_ext.h"
+
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
 
-
-uint8_t cnt=0;
-uint8_t canbuf[8];
-uint8_t rx_canbuf[8];
 uint8_t res;
 
 tSend msgTx;
 CAN_msg msgRx;
+int i = 0 ;
 /*
  * @brief   Application entry point.
  */
+
+void CAN_send_Msg(void);
+
 int main(void) {
 
     /* Init board hardware. */
@@ -51,45 +52,19 @@ int main(void) {
 
     PRINTF("Init CAN2\r\n");
 
-    /* Force the counter to be placed into memory. */
-    volatile static int i = 0 ;
-    /* Enter an infinite loop, just incrementing a counter. */
+    /* Enter an infinite loop*/
     while(1){
-
 		res=CAN_Receive_Msg(&msgRx);
+
     	switch(CAN_GetMode()){
     		case MODE_AT_START:
     			if(res)
     			{
-    				PRINTF("\r\n RECEIVE\r\n");
-    				for(i=0;i<res;i++){
-    					msgTx.abData[i]=msgRx.data[i];
-    					PRINTF("%x",msgRx.data[i]);
-    					PRINTF("\r\n");
-    				}
-
-    				msgTx.bDlc = 8;
-    				msgTx.bXtd = kFLEXCAN_FrameFormatExtend;
-    				msgTx.dwId = 0;
-    				res = send_can_msg(0, 0, &msgTx);
-    				if(!res)
-    					PRINTF("SEND OK\r\n");
-    				else
-    					PRINTF("SEND ERROR\r\n");
+    				CAN_send_Msg();
     			}
     			break;
     		case MODE_PERIODIC:
-				msgTx.bDlc = 8;
-				msgTx.bXtd = kFLEXCAN_FrameFormatExtend;
-				msgTx.dwId = 0;
-				for(i=0;i<res;i++){
-					msgTx.abData[i]=msgRx.data[i];
-				}
-				res = send_can_msg(0, 0, &msgTx);
-				if(!res)
-					PRINTF("SEND OK\r\n");
-				else
-					PRINTF("SEND ERROR\r\n");
+    			CAN_send_Msg();
     			break;
     		default:
     			break;
@@ -102,5 +77,20 @@ int main(void) {
 
     }
     return 0 ;
+}
+void CAN_send_Msg(void)
+{
+	for(i=0;i<res;i++){
+		msgTx.abData[i]=msgRx.data[i];
+	}
+	msgTx.bDlc = 8;
+	msgTx.bXtd = kFLEXCAN_FrameFormatExtend;
+	msgTx.dwId = 0;
+
+	res = send_can_msg(0, 0, &msgTx);
+	if(!res)
+		PRINTF("SEND OK\r\n");
+	else
+		PRINTF("SEND ERROR\r\n");
 }
 

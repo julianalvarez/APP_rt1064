@@ -19,6 +19,9 @@ volatile bool rxComplete = false;
 
 uint8_t mode = MODE_AT_START;
 
+void CAN_rdMsg (uint32_t ctrl, CAN_msg *msg);
+void CAN_ProcessIRQ(void);
+
 int32_t init_can (uint8_t bBusNumber,uint16_t wGlobMask,
 								  uint32_t dwGlobMask,uint32_t dwGlobMaskLastmsg,
 								  uint16_t wBitrate)
@@ -89,6 +92,7 @@ void CAN_rdMsg (uint32_t ctrl, CAN_msg *msg)
 		//completar para otro CAN
 	}
 }
+
 uint8_t CAN_Receive_Msg(CAN_msg *buf)
 {
 	uint8_t datalen=0;
