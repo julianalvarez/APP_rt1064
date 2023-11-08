@@ -9,7 +9,6 @@
  * @file    FlexCAN_Module.c
  * @brief   Application entry point.
  */
-#include <can.h>
 #include <stdio.h>
 #include "board.h"
 #include "peripherals.h"
@@ -27,7 +26,8 @@ uint8_t canbuf[8];
 uint8_t rx_canbuf[8];
 uint8_t res;
 
-tSend msg;
+tSend msgTx;
+CAN_msg msgRx;
 /*
  * @brief   Application entry point.
  */
@@ -49,30 +49,29 @@ int main(void) {
     BOARD_InitDebugConsole();
 #endif
 
-    PRINTF("Hello World\r\n");
+    PRINTF("Init CAN2\r\n");
 
     /* Force the counter to be placed into memory. */
     volatile static int i = 0 ;
     /* Enter an infinite loop, just incrementing a counter. */
     while(1){
-		res=0;
-		res=CAN_Receive_Msg(rx_canbuf);
+
+		res=CAN_Receive_Msg(&msgRx);
     	switch(CAN_GetMode()){
     		case MODE_AT_START:
     			if(res)
     			{
     				PRINTF("\r\n RECEIVE\r\n");
     				for(i=0;i<res;i++){
-    					msg.abData[i]=rx_canbuf[i];
-    					PRINTF("%x",rx_canbuf[i]);
+    					msgTx.abData[i]=msgRx.data[i];
+    					PRINTF("%x",msgRx.data[i]);
     					PRINTF("\r\n");
     				}
 
-    				msg.bDlc = 8;
-    				msg.bXtd = kFLEXCAN_FrameFormatExtend;
-    				msg.dwId = 0;
-    				res = send_can_msg(0, 0, &msg);
-    				//res=CAN_Send_Msg(msg,8);
+    				msgTx.bDlc = 8;
+    				msgTx.bXtd = kFLEXCAN_FrameFormatExtend;
+    				msgTx.dwId = 0;
+    				res = send_can_msg(0, 0, &msgTx);
     				if(!res)
     					PRINTF("SEND OK\r\n");
     				else
@@ -80,14 +79,13 @@ int main(void) {
     			}
     			break;
     		case MODE_PERIODIC:
-				msg.bDlc = 8;
-				msg.bXtd = kFLEXCAN_FrameFormatExtend;
-				msg.dwId = 0;
+				msgTx.bDlc = 8;
+				msgTx.bXtd = kFLEXCAN_FrameFormatExtend;
+				msgTx.dwId = 0;
 				for(i=0;i<res;i++){
-					msg.abData[i]=rx_canbuf[i];
+					msgTx.abData[i]=msgRx.data[i];
 				}
-				res = send_can_msg(0, 0, &msg);
-				//res=CAN_Send_Msg(canbuf,8);
+				res = send_can_msg(0, 0, &msgTx);
 				if(!res)
 					PRINTF("SEND OK\r\n");
 				else
