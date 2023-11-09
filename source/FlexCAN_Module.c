@@ -85,7 +85,7 @@ void CAN_send_Msg(void)
 	}
 	msgTx.bDlc = 8;
 	msgTx.bXtd = kFLEXCAN_FrameFormatExtend;
-	msgTx.dwId = 0;
+	msgTx.dwId = 0x18FFF6E6;
 
 	res = send_can_msg(0, 0, &msgTx);
 	if(!res)
