@@ -47,6 +47,7 @@ typedef struct tagCAN_MSG {
 
 
 void                    CAN_wrMsg (uint32_t ctrl, CAN_msg *msg);
+void                    CAN_rdMsg (uint32_t ctrl, CAN_msg *msg);
 
 
 #endif /* CAN_H_ */
