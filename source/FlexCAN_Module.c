@@ -9,6 +9,7 @@
  * @file    FlexCAN_Module.c
  * @brief   Application entry point.
  */
+/* Include ********************************************************************/
 #include <stdio.h>
 #include "board.h"
 #include "peripherals.h"
@@ -21,6 +22,8 @@
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
+
+/* Prototypes *****************************************************************/
 uint8_t mode = MODE_AT_START;
 
 uint8_t res = 0;
@@ -28,12 +31,10 @@ uint8_t res = 0;
 tSend msgTx;
 CAN_msg msgRx;
 int i = 0 ;
-/*
- * @brief   Application entry point.
- */
 
 void CAN_send_Msg(void);
 
+/* Functions ******************************************************************/
 int main(void) {
 
     /* Init board hardware. */
@@ -116,5 +117,4 @@ void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
 		msgRx.len = Msg->len;
 		res = 1;
 	}
-
 }

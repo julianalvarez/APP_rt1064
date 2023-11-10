@@ -4,15 +4,11 @@
  *  Created on: 7 nov. 2023
  *      Author: PLANTIUM
  */
-
+/* Include ********************************************************************/
 #include <can_ext.h>
-#include "can.h"
-#include "pin_mux.h"
 #include <string.h>
 
-
-void CAN_readMsg (uint32_t ctrl, CAN_msg *msg);
-
+/* Functions ******************************************************************/
 int32_t init_can (uint8_t bBusNumber,uint16_t wGlobMask,
 								  uint32_t dwGlobMask,uint32_t dwGlobMaskLastmsg,
 								  uint16_t wBitrate)

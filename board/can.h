@@ -4,9 +4,11 @@
  *  Created on: 9 nov. 2023
  *      Author: PLANTIUM
  */
+/* Include ********************************************************************/
 #include <stdint.h>
 #include "peripherals.h"
-
+#include "board.h"
+#include "pin_mux.h"
 
 #ifndef CAN_H_
 #define CAN_H_
@@ -38,6 +40,7 @@ enum {
 #define RX_MESSAGE_BUFFER_NUM (1)
 #define TS_CAN CAN2
 
+/* Typedefs *******************************************************************/
 typedef struct tagCAN_MSG {
     uint32_t id;                    /* 29 bit identifier                    */
     uint8_t  data[8];               /* Data field                           */
@@ -45,7 +48,7 @@ typedef struct tagCAN_MSG {
     uint8_t  format;                /* 0 - STANDARD, 1- EXTENDED IDENTIFIER */
 } CAN_msg;
 
-
+/* Prototypes *****************************************************************/
 void                    CAN_wrMsg (uint32_t ctrl, CAN_msg *msg);
 void                    CAN_rdMsg (uint32_t ctrl, CAN_msg *msg);
 

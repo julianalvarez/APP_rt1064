@@ -4,18 +4,20 @@
  *  Created on: 9 nov. 2023
  *      Author: PLANTIUM
  */
-
+/* Include ********************************************************************/
 #include <can.h>
 #include "FlexCAN_Module.h"
 
+/* Defines ********************************************************************/
 flexcan_frame_t can2_rxframe;
 volatile bool rxComplete = false;
 
 static CAN_msg          CAN_RxMsg[CAN_MAX_BUS_NR]; /* CAN message for receiving */
 
+/* Prototypes *****************************************************************/
 void CAN_ProcessIRQ(void);
 
-
+/* Functions ******************************************************************/
 void CAN_wrMsg (uint32_t ctrl, CAN_msg *msg)
 {
 	flexcan_frame_t frame;
@@ -74,11 +76,7 @@ void CAN_ProcessIRQ(void)
 		CAN_rdMsg(0, &CAN_RxMsg[0]);
 	    //CAN_CIR_BUF_PUSH (can_RX[0], CAN_RxMsg[0]);
 	    Obj_ISR (0, &CAN_RxMsg[0]);
-		/*
-		if(can2_rxframee.id == FLEXCAN_RX_MB_EXT_MASK(0x18FFF680, 0, 0))
-		{
-			rxCompletee=true;
-		}*/
+
 	}
 	__DSB();
 }
