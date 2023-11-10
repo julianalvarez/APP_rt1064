@@ -56,8 +56,9 @@ int main(void) {
 
     /* Enter an infinite loop*/
     while(1){
+    	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
 
-    	switch(CAN_GetMode()){
+    	switch(mode){
     		case MODE_AT_START:
     			if(res)
     			{
@@ -114,24 +115,6 @@ void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
 		msgRx.id = Msg->id;
 		msgRx.len = Msg->len;
 		res = 1;
-		if(msgRx.data[0] == 1)
-		{
-			CAN_SetMode(MODE_PERIODIC);
-		}
-		else
-		{
-			CAN_SetMode(MODE_AT_START);
-		}
 	}
 
-}
-
-void CAN_SetMode (uint8_t value)
-{
-	mode = value;
-}
-
-uint8_t CAN_GetMode (void)
-{
-	return mode;
 }
