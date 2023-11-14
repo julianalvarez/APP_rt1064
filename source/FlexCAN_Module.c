@@ -19,6 +19,7 @@
 #include "fsl_debug_console.h"
 #include "can_ext.h"
 #include "FlexCAN_Module.h"
+#include <j1939.h>
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
@@ -46,7 +47,21 @@ int main(void) {
     BOARD_InitBootClocks();
     BOARD_InitLPUART1();
 
-    init_can(0, 0, 0, 0, 250000/1000);
+    /* CANx - Open J1939 */
+	Open_J1939 (0,                             /* Controller            */
+				true,                               /* Init Name and Address */
+				80,                      /* Address               */
+				ARBITRARY_ADDRESS_NOT_SUPPORTED,    /* ARBITRARY_ADDRESS     */
+				INDUSTRY_GROUP_AGRICULTURAL,        /* INDUSTRY_GROUP        */
+				VEHICLE_INSTANCE_NA,                /* VEHICLE_INSTANCE      */
+				VEHICLE_SYSTEM_AGRICULTURAL_TRACTOR,/* VEHICLE_SYSTEM        */
+				FUNCTION_STEERING_CONTROLLER,       /* FUNCTION              */
+				0,                      /* FUNCTION_INSTANCE     */
+				ECU_INSTANCE_NA,                    /* ECU_INSTANCE          */
+				MANUFACTURER_CODE_GENTEC,           /* MANUFACTURER_CODE     */
+				32);                      /* IDENTITY_NUMBER       */
+
+    //init_can(0, 0, 0, 0, 250000/1000);
 
 #ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
     /* Init FSL debug console. */
@@ -117,4 +132,9 @@ void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
 		msgRx.len = Msg->len;
 		res = 1;
 	}
+}
+
+void init_CAN (uint32_t ctrl, uint32_t baudrate)
+{
+    init_can (ctrl, 0, 0, 0, baudrate/1000);
 }

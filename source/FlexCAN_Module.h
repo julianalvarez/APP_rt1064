@@ -14,5 +14,6 @@
 
 /* Prototypes *****************************************************************/
 void Obj_ISR (uint8_t ctrl, CAN_msg* Msg);
+void init_CAN (uint32_t ctrl, uint32_t baudrate);
 
 #endif /* FLEXCAN_MODULE_H_ */
