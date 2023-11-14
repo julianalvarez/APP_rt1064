@@ -33,7 +33,7 @@ tSend msgTx;
 CAN_msg msgRx;
 int i = 0 ;
 
-void CAN_send_Msg(void);
+void CAN_send_Msg(uint32_t ctrl);
 
 /* Functions ******************************************************************/
 int main(void) {
@@ -78,11 +78,11 @@ int main(void) {
     		case MODE_AT_START:
     			if(res)
     			{
-    				CAN_send_Msg();
+    				CAN_send_Msg(0);
     			}
     			break;
     		case MODE_PERIODIC:
-    			CAN_send_Msg();
+    			CAN_send_Msg(0);
     			break;
     		default:
     			break;
@@ -96,8 +96,20 @@ int main(void) {
     }
     return 0 ;
 }
-void CAN_send_Msg(void)
+void CAN_send_Msg(uint32_t ctrl)
 {
+    J1939_MESSAGE_T     tJ1939Msg;
+
+    tJ1939Msg.Priority           = J1939_INFO_PRIORITY;
+    tJ1939Msg.Pgn                = PGN_ADDRESS_CLAIM | J1939_ADDRESS_GLOBAL;
+    tJ1939Msg.Length             = J1939_DATA_LENGTH;
+    //memcpy (&tJ1939Msg.Data, (uint8_t*)(&AC_NAME[ctrlForAddressClaim]), 8U);
+    tJ1939Msg.SourceAddress = 0xE6;
+	for(i=0;i<8;i++){
+		tJ1939Msg.Data[i]=msgRx.data[i];
+	}
+    TransmitMessages_J1939 (ctrl, &tJ1939Msg);
+/*
 	uint8_t err = 0;
 	for(i=0;i<8;i++){
 		msgTx.abData[i]=msgRx.data[i];
@@ -110,7 +122,7 @@ void CAN_send_Msg(void)
 	if(!err)
 		PRINTF("SEND OK\r\n");
 	else
-		PRINTF("SEND ERROR\r\n");
+		PRINTF("SEND ERROR\r\n");*/
 }
 
 void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
@@ -134,7 +146,4 @@ void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
 	}
 }
 
-void init_CAN (uint32_t ctrl, uint32_t baudrate)
-{
-    init_can (ctrl, 0, 0, 0, baudrate/1000);
-}
+
