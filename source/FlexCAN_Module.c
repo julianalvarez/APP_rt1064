@@ -26,14 +26,10 @@
 /* TODO: insert other definitions and declarations here. */
 
 /* Prototypes *****************************************************************/
-#define TIME_MSG 1000U
 uint8_t mode = MODE_AT_START;
 
-uint8_t res= 0;
-tSend msgTx;
 CAN_msg msgRx;
 int i = 0 ;
-uint32_t lastTime = 0;
 ABGC_MSG_T                          tABGC;        /* TP */
 static uint8_t      primaryBus = 0;
 
@@ -70,33 +66,17 @@ int main(void) {
     /* Init FSL debug console. */
     BOARD_InitDebugConsole();
 #endif
+
     CANMSG_ABGC_Init(0x0);
     PRINTF("Init CAN2\r\n");
 
     /* Enter an infinite loop*/
     while(1){
-/*
-    	if (TIME_Get() - lastTime > 1000)
-    	{
-    	    PRINTF("event\r\n");
-    	    CAN_send_Msg(0);
-    	    lastTime = TIME_Get();
-    	}*/
-    	__enable_irq();
+
     	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
-    	switch(mode){
-    		case MODE_AT_START:
-    			if(getFlag())
-    			{
-    				CAN_send_Msg(0);
-    			}
-    			break;
-    		case MODE_PERIODIC:
+    	if(mode == MODE_PERIODIC){
     			CAN_send_Msg(0);
-    			break;
-    		default:
-    			break;
     	}
 
 		for (i = 0; i < 40000000U; i++)
@@ -152,5 +132,8 @@ uint32_t PAT_GEN_OnABGC (uint32_t Addr)
 	msgRx.data[6] = tABGC.dato6;
 	msgRx.data[7] = tABGC.dato7;
 
+	if (msgRx.data[0] == 0){
+		CAN_send_Msg(0);
+	}
 	return 0;
 }

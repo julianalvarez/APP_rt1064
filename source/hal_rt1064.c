@@ -10,7 +10,6 @@
 #include "can.h"
 #include "hal_rt1064.h"
 #include "time.h"
-uint8_t flag = 0;
 
 
 void init_CAN (uint32_t ctrl, uint32_t baudrate)
@@ -36,7 +35,6 @@ void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
 {
     J1939_MESSAGE_T     J1939Msg;
 
-	flag=0;
 	if(Msg->id == FLEXCAN_RX_MB_EXT_MASK(0x18FFF680, 0, 0))
 	{
 
@@ -48,13 +46,7 @@ void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
 	    memcpy (J1939Msg.Data, Msg->data, J1939Msg.Length );
 
 	    ReceiveMessages_J1939 (ctrl, &J1939Msg);
-		flag = 1;
 	}
-}
-
-uint8_t getFlag(void)
-{
-	return flag;
 }
 
 uint32_t getTime (void)
