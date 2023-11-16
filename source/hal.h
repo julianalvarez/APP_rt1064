@@ -26,6 +26,7 @@ uint32_t                GetProcDiag (void);
 
 /* Time */
 uint32_t                getTime (void);
+uint8_t					getFlag(void);
 
 /* Control Area Network */
 void                    init_CAN (uint32_t ctrl, uint32_t baudrate);

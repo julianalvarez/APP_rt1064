@@ -20,18 +20,22 @@
 #include "can_ext.h"
 #include "FlexCAN_Module.h"
 #include <j1939.h>
+#include "time.h"
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
 
 /* Prototypes *****************************************************************/
+#define TIME_MSG 1000U
 uint8_t mode = MODE_AT_START;
 
-uint8_t res = 0;
-
+uint8_t res= 0;
 tSend msgTx;
 CAN_msg msgRx;
 int i = 0 ;
+uint32_t lastTime = 0;
+ABGC_MSG_T                          tABGC;        /* TP */
+static uint8_t      primaryBus = 0;
 
 void CAN_send_Msg(uint32_t ctrl);
 
@@ -46,11 +50,11 @@ int main(void) {
 
     BOARD_InitBootClocks();
     BOARD_InitLPUART1();
-
+    TIME_Init(1000U);
     /* CANx - Open J1939 */
 	Open_J1939 (0,                             /* Controller            */
 				true,                               /* Init Name and Address */
-				80,                      /* Address               */
+				0xE6,                      /* Address               */
 				ARBITRARY_ADDRESS_NOT_SUPPORTED,    /* ARBITRARY_ADDRESS     */
 				INDUSTRY_GROUP_AGRICULTURAL,        /* INDUSTRY_GROUP        */
 				VEHICLE_INSTANCE_NA,                /* VEHICLE_INSTANCE      */
@@ -61,22 +65,29 @@ int main(void) {
 				MANUFACTURER_CODE_GENTEC,           /* MANUFACTURER_CODE     */
 				32);                      /* IDENTITY_NUMBER       */
 
-    //init_can(0, 0, 0, 0, 250000/1000);
 
 #ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
     /* Init FSL debug console. */
     BOARD_InitDebugConsole();
 #endif
-
+    CANMSG_ABGC_Init(0x0);
     PRINTF("Init CAN2\r\n");
 
     /* Enter an infinite loop*/
     while(1){
+/*
+    	if (TIME_Get() - lastTime > 1000)
+    	{
+    	    PRINTF("event\r\n");
+    	    CAN_send_Msg(0);
+    	    lastTime = TIME_Get();
+    	}*/
+    	__enable_irq();
+    	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
-
     	switch(mode){
     		case MODE_AT_START:
-    			if(res)
+    			if(getFlag())
     			{
     				CAN_send_Msg(0);
     			}
@@ -109,41 +120,37 @@ void CAN_send_Msg(uint32_t ctrl)
 		tJ1939Msg.Data[i]=msgRx.data[i];
 	}
     TransmitMessages_J1939 (ctrl, &tJ1939Msg);
-/*
-	uint8_t err = 0;
-	for(i=0;i<8;i++){
-		msgTx.abData[i]=msgRx.data[i];
-	}
-	msgTx.bDlc = 8;
-	msgTx.bXtd = kFLEXCAN_FrameFormatExtend;
-	msgTx.dwId = 0x18FFF6E6;
-
-	err = send_can_msg(0, 0, &msgTx);
-	if(!err)
-		PRINTF("SEND OK\r\n");
-	else
-		PRINTF("SEND ERROR\r\n");*/
 }
 
-void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
+void CANMSG_ABGC_Init(uint8_t primary)
 {
-	res=0;
-	if(Msg->id == FLEXCAN_RX_MB_EXT_MASK(0x18FFF680, 0, 0))
-	{
-		msgRx.data[0] = Msg->data[0];
-		msgRx.data[1] = Msg->data[1];
-		msgRx.data[2] = Msg->data[2];
-		msgRx.data[3] = Msg->data[3];
-		msgRx.data[4] = Msg->data[4];
-		msgRx.data[5] = Msg->data[5];
-		msgRx.data[6] = Msg->data[6];
-		msgRx.data[7] = Msg->data[7];
+    int32_t             result;
 
-		msgRx.format = Msg->format;
-		msgRx.id = Msg->id;
-		msgRx.len = Msg->len;
-		res = 1;
-	}
+    primaryBus = primary;
+
+    /* PGN 0xFFF4 ABGC_cansg AB General Curve */
+    result = OnPgn_J1939 (primaryBus,
+    					  0xFFF6U,
+                          8U,
+                          &tABGC,
+                          PAT_GEN_OnABGC,
+                          0, /* Disabled */
+                          NULL);
+    if (result != RC_SUCCESS) {
+    	PRINTF("Error Registering Message\n");
+    }
 }
 
+uint32_t PAT_GEN_OnABGC (uint32_t Addr)
+{
+	msgRx.data[0] = tABGC.mode;
+	msgRx.data[1] = tABGC.dato1;
+	msgRx.data[2] = tABGC.dato2;
+	msgRx.data[3] = tABGC.dato3;
+	msgRx.data[4] = tABGC.dato4;
+	msgRx.data[5] = tABGC.dato5;
+	msgRx.data[6] = tABGC.dato6;
+	msgRx.data[7] = tABGC.dato7;
 
+	return 0;
+}

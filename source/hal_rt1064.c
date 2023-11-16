@@ -8,7 +8,9 @@
 #include "hal.h"
 #include "can_ext.h"
 #include "can.h"
-
+#include "hal_rt1064.h"
+#include "time.h"
+uint8_t flag = 0;
 
 
 void init_CAN (uint32_t ctrl, uint32_t baudrate)
@@ -28,4 +30,45 @@ void PutMSG_CAN (uint32_t ctrl, J1939_MESSAGE_T* pJ1939Msg)
     memcpy (Msg.abData, pJ1939Msg->Data, Msg.bDlc);
 
     send_can_msg (ctrl, 0, &Msg);
+}
+
+void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
+{
+    J1939_MESSAGE_T     J1939Msg;
+
+	flag=0;
+	if(Msg->id == FLEXCAN_RX_MB_EXT_MASK(0x18FFF680, 0, 0))
+	{
+
+	    J1939Msg.Priority      = (Msg->id >> 26) & 0x07U;
+	    J1939Msg.Pgn           = (Msg->id >> 8) & 0x3FFFFU;
+	    J1939Msg.SourceAddress = Msg->id & 0xFFU;
+	    J1939Msg.Length        = Msg->len;
+	    J1939Msg.bfEFF         = Msg->format;
+	    memcpy (J1939Msg.Data, Msg->data, J1939Msg.Length );
+
+	    ReceiveMessages_J1939 (ctrl, &J1939Msg);
+		flag = 1;
+	}
+}
+
+uint8_t getFlag(void)
+{
+	return flag;
+}
+
+uint32_t getTime (void)
+{
+    return TIME_Get();
+}
+
+void SetAddressFilter_CAN (uint32_t ctrl, uint32_t Address)
+{
+    ctrl = ctrl;
+    Address = Address;
+}
+
+void Write_EEPROM(uint32_t Address, void* pOrigin, uint32_t Size)
+{
+    //EEPROM_Write (Address, (uint8_t*)pOrigin, Size);
 }

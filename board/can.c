@@ -7,6 +7,7 @@
 /* Include ********************************************************************/
 #include <can.h>
 #include "FlexCAN_Module.h"
+#include "hal_rt1064.h"
 
 /* Defines ********************************************************************/
 flexcan_frame_t can2_rxframe;
@@ -47,22 +48,28 @@ void CAN_wrMsg (uint32_t ctrl, CAN_msg *msg)
 
 void CAN_rdMsg (uint32_t ctrl, CAN_msg *msg)
 {
+    //msg->format = (CANData & CAN_FRAME_FF_EXT) == CAN_FRAME_FF_EXT;
+
     /* Read frame informations */
     msg->format = kFLEXCAN_FrameFormatExtend;
-    msg->len    = 8;
+    msg->len = 8U;
 
     /* Read CAN message identifier */
     msg->id = can2_rxframe.id;
 
-    /* DATA FRAME */
-    *(uint32_t*) &msg->data[0] = can2_rxframe.dataByte0;
-    *(uint32_t*) &msg->data[1] = can2_rxframe.dataByte1;
-    *(uint32_t*) &msg->data[2] = can2_rxframe.dataByte2;
-    *(uint32_t*) &msg->data[3] = can2_rxframe.dataByte3;
-    *(uint32_t*) &msg->data[4] = can2_rxframe.dataByte4;
-    *(uint32_t*) &msg->data[5] = can2_rxframe.dataByte5;
-    *(uint32_t*) &msg->data[6] = can2_rxframe.dataByte6;
-    *(uint32_t*) &msg->data[7] = can2_rxframe.dataByte7;
+    /* DATA FRAME
+    *(uint32_t*) &msg->data[0] = can2_rxframe.dataWord0;
+	*(uint32_t*) &msg->data[4] = can2_rxframe.dataWord1;*/
+
+    /* DATA FRAME*/
+    *(uint8_t*) &msg->data[0] = can2_rxframe.dataByte0;
+    *(uint8_t*) &msg->data[1] = can2_rxframe.dataByte1;
+    *(uint8_t*) &msg->data[2] = can2_rxframe.dataByte2;
+    *(uint8_t*) &msg->data[3] = can2_rxframe.dataByte3;
+    *(uint8_t*) &msg->data[4] = can2_rxframe.dataByte4;
+    *(uint8_t*) &msg->data[5] = can2_rxframe.dataByte5;
+    *(uint8_t*) &msg->data[6] = can2_rxframe.dataByte6;
+    *(uint8_t*) &msg->data[7] = can2_rxframe.dataByte7;
 
 }
 
@@ -74,6 +81,7 @@ void CAN_ProcessIRQ(void)
 		FLEXCAN_ReadRxMb(TS_CAN,RX_MESSAGE_BUFFER_NUM,&can2_rxframe);
 
 		CAN_rdMsg(0, &CAN_RxMsg[0]);
+
 	    //CAN_CIR_BUF_PUSH (can_RX[0], CAN_RxMsg[0]);
 	    Obj_ISR (0, &CAN_RxMsg[0]);
 
