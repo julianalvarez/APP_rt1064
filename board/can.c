@@ -48,18 +48,12 @@ void CAN_wrMsg (uint32_t ctrl, CAN_msg *msg)
 
 void CAN_rdMsg (uint32_t ctrl, CAN_msg *msg)
 {
-    //msg->format = (CANData & CAN_FRAME_FF_EXT) == CAN_FRAME_FF_EXT;
-
     /* Read frame informations */
     msg->format = kFLEXCAN_FrameFormatExtend;
     msg->len = 8U;
 
     /* Read CAN message identifier */
     msg->id = can2_rxframe.id;
-
-    /* DATA FRAME
-    *(uint32_t*) &msg->data[0] = can2_rxframe.dataWord0;
-	*(uint32_t*) &msg->data[4] = can2_rxframe.dataWord1;*/
 
     /* DATA FRAME*/
     *(uint8_t*) &msg->data[0] = can2_rxframe.dataByte0;
@@ -82,7 +76,6 @@ void CAN_ProcessIRQ(void)
 
 		CAN_rdMsg(0, &CAN_RxMsg[0]);
 
-	    //CAN_CIR_BUF_PUSH (can_RX[0], CAN_RxMsg[0]);
 	    Obj_ISR (0, &CAN_RxMsg[0]);
 
 	}
