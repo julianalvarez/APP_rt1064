@@ -35,18 +35,15 @@ void Obj_ISR (uint8_t ctrl, CAN_msg* Msg)
 {
     J1939_MESSAGE_T     J1939Msg;
 
-	if(Msg->id == FLEXCAN_RX_MB_EXT_MASK(0x18FFF680, 0, 0))
-	{
+	J1939Msg.Priority      = (Msg->id >> 26) & 0x07U;
+	J1939Msg.Pgn           = (Msg->id >> 8) & 0x3FFFFU;
+	J1939Msg.SourceAddress = Msg->id & 0xFFU;
+	J1939Msg.Length        = Msg->len;
+	J1939Msg.bfEFF         = Msg->format;
+	memcpy (J1939Msg.Data, Msg->data, J1939Msg.Length );
 
-	    J1939Msg.Priority      = (Msg->id >> 26) & 0x07U;
-	    J1939Msg.Pgn           = (Msg->id >> 8) & 0x3FFFFU;
-	    J1939Msg.SourceAddress = Msg->id & 0xFFU;
-	    J1939Msg.Length        = Msg->len;
-	    J1939Msg.bfEFF         = Msg->format;
-	    memcpy (J1939Msg.Data, Msg->data, J1939Msg.Length );
+	ReceiveMessages_J1939 (ctrl, &J1939Msg);
 
-	    ReceiveMessages_J1939 (ctrl, &J1939Msg);
-	}
 }
 
 uint32_t getTime (void)

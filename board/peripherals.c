@@ -217,7 +217,7 @@ const flexcan_config_t BOARD_CAN2_config = {
   .enableTimerSync = true,
   .enableSelfWakeup = false,
   .enableIndividMask = false,
-  .disableSelfReception = false,
+  .disableSelfReception = true,
   .enableListenOnlyMode = false,
   .enableSupervisorMode = false,
   .timingConfig = {
@@ -246,11 +246,11 @@ static void BOARD_CAN2_init(uint16_t wBitrate) {
 	/* Message buffer 2 initialization */
 	FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
 	/* Enable FlexCAN interrupts of message buffers */
-	FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 2ULL);
+	FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 1 << 1);
 	/* Enable interrupt CAN2_IRQn request in the NVIC. */
 	EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
 
-	FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_STD_MASK(0, 0, 0));
+	FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_EXT_MASK(0, 0, 0));
 }
 
 /***********************************************************************************************************************
