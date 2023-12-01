@@ -89,17 +89,22 @@ int main(void) {
 }
 void CAN_send_Msg(uint32_t ctrl)
 {
-    J1939_MESSAGE_T     tJ1939Msg;
+    tABGC.mode = msgRx.data[0];
+    tABGC.dato1 = msgRx.data[1];
+    tABGC.dato2 = msgRx.data[2];
+    tABGC.dato3 = msgRx.data[3];
+    tABGC.dato4 = msgRx.data[4];
+    tABGC.dato5 = msgRx.data[5];
+    tABGC.dato6 = msgRx.data[6];
+    tABGC.dato7 = msgRx.data[7];
 
-    tJ1939Msg.Priority           = J1939_INFO_PRIORITY;
-    tJ1939Msg.Pgn                = PGN_ADDRESS_CLAIM | J1939_ADDRESS_GLOBAL;
-    tJ1939Msg.Length             = J1939_DATA_LENGTH;
-    //memcpy (&tJ1939Msg.Data, (uint8_t*)(&AC_NAME[ctrlForAddressClaim]), 8U);
-    tJ1939Msg.SourceAddress = 0xE6;
-	for(i=0;i<8;i++){
-		tJ1939Msg.Data[i]=msgRx.data[i];
-	}
-    TransmitMessages_J1939 (ctrl, &tJ1939Msg);
+    Output_J1939 (	ctrl,
+    				0xFFF6U,
+			        J1939_INFO_PRIORITY,
+					J1939_DATA_LENGTH,
+                    &tABGC,
+                    J1939_Address[ctrl]);
+
 }
 
 void CANMSG_ABGC_Init(uint8_t primary)
