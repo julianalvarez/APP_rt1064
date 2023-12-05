@@ -7,7 +7,6 @@
 /* Include ********************************************************************/
 #include <can.h>
 #include "FlexCAN_Module.h"
-#include "hal_rt1064.h"
 
 /* Defines ********************************************************************/
 flexcan_frame_t can2_rxframe;

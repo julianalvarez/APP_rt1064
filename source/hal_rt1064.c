@@ -8,7 +8,6 @@
 #include "hal.h"
 #include "can_ext.h"
 #include "can.h"
-#include "hal_rt1064.h"
 #include "time.h"
 
 

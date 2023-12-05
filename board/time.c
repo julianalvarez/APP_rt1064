@@ -27,9 +27,6 @@ void TIME_Init (uint32_t TickInMicroseconds)
     GPT_SetClockDivider(GPT_1, 1);
 
     /* Set both GPT modules to 32-bit mode */
-    uint32_t a = CLOCK_GetFreq(kCLOCK_OscClk);
-    uint32_t b =  TickInMicroseconds;
-    uint32_t c = a/b;
     GPT_SetOutputCompareValue(GPT_1, kGPT_OutputCompare_Channel1, CLOCK_GetFreq(kCLOCK_OscClk) / TickInMicroseconds);
 
     /* Enable GPT Output Compare1 interrupt */
