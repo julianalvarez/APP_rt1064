@@ -15,6 +15,7 @@ static CAN_msg          CAN_RxMsg[CAN_MAX_BUS_NR]; /* CAN message for receiving 
 
 /* Prototypes *****************************************************************/
 void CAN_ProcessIRQ(void);
+__WEAK void                 Obj_ISR (uint8_t ctrl, CAN_msg* Msg);
 
 /* Functions ******************************************************************/
 void CAN_wrMsg (uint32_t ctrl, CAN_msg *msg)
@@ -74,7 +75,7 @@ void CAN_ProcessIRQ(void)
 
 		CAN_rdMsg(0, &CAN_RxMsg[0]);
 
-	    Obj_ISR (0, &CAN_RxMsg[0]);
+		Obj_ISR (0, &CAN_RxMsg[0]);
 
 	}
 	__DSB();

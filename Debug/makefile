@@ -50,7 +50,7 @@ main-build: FlexCAN_Module.axf
 FlexCAN_Module.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -Xlinker -Map="FlexCAN_Module.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T FlexCAN_Module_Debug.ld -o "FlexCAN_Module.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\lib" -Xlinker -Map="FlexCAN_Module.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T FlexCAN_Module_Debug.ld -o "FlexCAN_Module.axf" $(OBJS) $(USER_OBJS) $(LIBS) -lj1939_STEER_LIB
 	@echo 'Finished building target: $@'
 	@echo ' '
 

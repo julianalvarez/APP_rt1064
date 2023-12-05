@@ -5,15 +5,15 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../source/FlexCAN_Module.c \
-../source/semihost_hardfault.c 
+../source/hal_rt1064.c 
 
 C_DEPS += \
 ./source/FlexCAN_Module.d \
-./source/semihost_hardfault.d 
+./source/hal_rt1064.d 
 
 OBJS += \
 ./source/FlexCAN_Module.o \
-./source/semihost_hardfault.o 
+./source/hal_rt1064.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -28,7 +28,7 @@ source/%.o: ../source/%.c source/subdir.mk
 clean: clean-source
 
 clean-source:
-	-$(RM) ./source/FlexCAN_Module.d ./source/FlexCAN_Module.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o
+	-$(RM) ./source/FlexCAN_Module.d ./source/FlexCAN_Module.o ./source/hal_rt1064.d ./source/hal_rt1064.o
 
 .PHONY: clean-source
 

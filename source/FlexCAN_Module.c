@@ -19,7 +19,7 @@
 #include "fsl_debug_console.h"
 #include "can_ext.h"
 #include "FlexCAN_Module.h"
-#include <j1939.h>
+#include "../lib/include/j1939.h"
 #include "time.h"
 
 /* TODO: insert other include files here. */

@@ -2,6 +2,5 @@ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\d
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_clock.h:1497:20:CLOCK_ControlGate	32	static
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_clock.h:1514:20:CLOCK_EnableClock	16	static
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_iomuxc.h:1272:20:IOMUXC_SetPinMux	24	static
-../board/pin_mux.c:240:7:BOARD_Clock_Enable	8	static
-../board/pin_mux.c:244:7:BOARD_InitPinsFlexCAN	16	static
-../board/pin_mux.c:249:6:BOARD_InitPinsLPUART	16	static
+../board/pin_mux.c:221:6:BOARD_InitBootPins	8	static
+../board/pin_mux.c:243:6:BOARD_InitPins	16	static
