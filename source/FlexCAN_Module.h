@@ -26,8 +26,6 @@ typedef struct tagABGC_MSG_T
 } ABGC_MSG_T;
 
 /* Prototypes *****************************************************************/
-void 					Obj_ISR (uint8_t ctrl, CAN_msg* Msg);
-void 					init_CAN (uint32_t ctrl, uint32_t baudrate);
 void                    CANMSG_ABGC_Init (uint8_t primary);
 uint32_t 				PAT_GEN_OnABGC (uint32_t Addr);
 

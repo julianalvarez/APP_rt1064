@@ -177,7 +177,7 @@ instance:
       - enableTimerSync: 'true'
       - enableSelfWakeup: 'false'
       - enableIndividMask: 'false'
-      - disableSelfReception: 'false'
+      - disableSelfReception: 'true'
       - enableListenOnlyMode: 'false'
       - enableSupervisorMode: 'false'
       - timingConfig:
@@ -230,43 +230,33 @@ const flexcan_config_t BOARD_CAN2_config = {
 };
 /* Message buffer 1 configuration structure */
 const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1 = {
-  .id = FLEXCAN_ID_EXT(0),
+  .id = FLEXCAN_ID_EXT(0UL),
   .format = kFLEXCAN_FrameFormatExtend,
   .type = kFLEXCAN_FrameTypeData
 };
 
-static void BOARD_CAN2_init(uint16_t wBitrate) {
-	flexcan_config_t _config;
-	_config = BOARD_CAN2_config;
-	_config.bitRate = wBitrate*1000;
-
-	FLEXCAN_Init(BOARD_CAN2_PERIPHERAL, &_config, BOARD_CAN2_CLOCK_SOURCE);
-	/* Message buffer 1 initialization */
-	FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &BOARD_CAN2_rx_mb_config_1, true);
-	/* Message buffer 2 initialization */
-	FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
-	/* Enable FlexCAN interrupts of message buffers */
-	FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 1 << 1);
-	/* Enable interrupt CAN2_IRQn request in the NVIC. */
-	EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
-
-	FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_EXT_MASK(0, 0, 0));
+static void BOARD_CAN2_init(void) {
+  FLEXCAN_Init(BOARD_CAN2_PERIPHERAL, &BOARD_CAN2_config, BOARD_CAN2_CLOCK_SOURCE);
+  /* Message buffer 1 initialization */
+  FLEXCAN_SetRxMbConfig(BOARD_CAN2_PERIPHERAL, 1, &BOARD_CAN2_rx_mb_config_1, true);
+  /* Message buffer 2 initialization */
+  FLEXCAN_SetTxMbConfig(BOARD_CAN2_PERIPHERAL, 2, true);
+  /* Enable FlexCAN interrupts of message buffers */
+  FLEXCAN_EnableMbInterrupts(BOARD_CAN2_PERIPHERAL, 2ULL);
+  /* Enable interrupt CAN2_IRQn request in the NVIC. */
+  EnableIRQ(BOARD_CAN2_FLEXCAN_IRQN);
 }
 
 /***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
-void BOARD_InitLPUART1(void)
+void BOARD_InitPeripherals(void)
 {
   /* Initialize components */
   BOARD_LPUART1_init();
+  BOARD_CAN2_init();
 }
 
-void BOARD_InitFLEXCAN(uint16_t wBitrate)
-{
-  /* Initialize components */
-  BOARD_CAN2_init(wBitrate);
-}
 /***********************************************************************************************************************
  * BOARD_InitBootPeripherals function
  **********************************************************************************************************************/

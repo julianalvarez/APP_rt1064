@@ -41,11 +41,12 @@ int main(void) {
     /* Init board hardware. */
     BOARD_ConfigMPU();
 
-    BOARD_Clock_Enable();
-	BOARD_InitPinsLPUART();
+    CLOCK_EnableClock(kCLOCK_Iomuxc);
+    BOARD_InitBootPins();
+	//BOARD_InitPinsLPUART();
 
     BOARD_InitBootClocks();
-    BOARD_InitLPUART1();
+    //BOARD_InitLPUART1();
     TIME_Init(1000U);
     /* CANx - Open J1939 */
 	Open_J1939 (0,                             /* Controller            */

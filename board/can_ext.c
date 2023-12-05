@@ -7,6 +7,7 @@
 /* Include ********************************************************************/
 #include <can_ext.h>
 #include <string.h>
+#include "peripherals.h"
 
 /* Functions ******************************************************************/
 int32_t init_can (uint8_t bBusNumber,uint16_t wGlobMask,
@@ -17,8 +18,8 @@ int32_t init_can (uint8_t bBusNumber,uint16_t wGlobMask,
         return (CAN_RANGE_ERR);
     } else {
 		if(bBusNumber == 0){
-			BOARD_InitPinsFlexCAN();
-			BOARD_InitFLEXCAN(wBitrate);
+			BOARD_InitBootPeripherals();
+			FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_EXT_MASK(0, 0, 0));
 		}
 		else{
 			//completar para otro periferico CAN

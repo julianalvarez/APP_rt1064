@@ -840,7 +840,7 @@
                            <setting name="enableTimerSync" value="true"/>
                            <setting name="enableSelfWakeup" value="false"/>
                            <setting name="enableIndividMask" value="false"/>
-                           <setting name="disableSelfReception" value="false"/>
+                           <setting name="disableSelfReception" value="true"/>
                            <setting name="enableListenOnlyMode" value="false"/>
                            <setting name="enableSupervisorMode" value="false"/>
                            <struct name="timingConfig">
