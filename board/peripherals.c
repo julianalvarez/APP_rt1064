@@ -15,7 +15,10 @@ board: MIMXRT1064-EVK
 functionalGroups:
 - name: BOARD_InitPeripherals
   UUID: 1c6563a6-c68b-40e5-8828-2853c99f95fa
-  called_from_default_init: true
+  id_prefix: BOARD_
+  selectedCore: core0
+- name: BOARD_InitCAN2
+  UUID: bc675702-d6f1-4fcd-bc7c-696a0b730ccb
   id_prefix: BOARD_
   selectedCore: core0
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
@@ -54,31 +57,6 @@ component:
 /***********************************************************************************************************************
  * BOARD_InitPeripherals functional group
  **********************************************************************************************************************/
-/***********************************************************************************************************************
- * NVIC initialization code
- **********************************************************************************************************************/
-/* clang-format off */
-/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
-instance:
-- name: 'NVIC'
-- type: 'nvic'
-- mode: 'general'
-- custom_name_enabled: 'false'
-- type_id: 'nvic_57b5eef3774cc60acaede6f5b8bddc67'
-- functional_group: 'BOARD_InitPeripherals'
-- peripheral: 'NVIC'
-- config_sets:
-  - nvic:
-    - interrupt_table:
-      - 0: []
-    - interrupts: []
- * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
-/* clang-format on */
-
-/* Empty initialization function (commented out)
-static void BOARD_NVIC_init(void) {
-} */
-
 /***********************************************************************************************************************
  * LPUART1 initialization code
  **********************************************************************************************************************/
@@ -142,6 +120,59 @@ static void BOARD_LPUART1_init(void) {
 }
 
 /***********************************************************************************************************************
+ * NVIC_2 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'NVIC_2'
+- type: 'nvic'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'nvic_57b5eef3774cc60acaede6f5b8bddc67'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'NVIC'
+- config_sets:
+  - nvic:
+    - interrupt_table:
+      - 0: []
+    - interrupts: []
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+
+/* Empty initialization function (commented out)
+static void BOARD_NVIC_2_init(void) {
+} */
+
+/***********************************************************************************************************************
+ * BOARD_InitCAN2 functional group
+ **********************************************************************************************************************/
+/***********************************************************************************************************************
+ * NVIC initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'NVIC'
+- type: 'nvic'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'nvic_57b5eef3774cc60acaede6f5b8bddc67'
+- functional_group: 'BOARD_InitCAN2'
+- peripheral: 'NVIC'
+- config_sets:
+  - nvic:
+    - interrupt_table:
+      - 0: []
+    - interrupts: []
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+
+/* Empty initialization function (commented out)
+static void BOARD_NVIC_init(void) {
+} */
+
+/***********************************************************************************************************************
  * CAN2 initialization code
  **********************************************************************************************************************/
 /* clang-format off */
@@ -152,7 +183,7 @@ instance:
 - mode: 'interrupts'
 - custom_name_enabled: 'false'
 - type_id: 'flexcan_5cab76b676858377b40de2b864152fd8'
-- functional_group: 'BOARD_InitPeripherals'
+- functional_group: 'BOARD_InitCAN2'
 - peripheral: 'CAN2'
 - config_sets:
   - interruptsCfg:
@@ -254,6 +285,11 @@ void BOARD_InitPeripherals(void)
 {
   /* Initialize components */
   BOARD_LPUART1_init();
+}
+
+void BOARD_InitCAN2(void)
+{
+  /* Initialize components */
   BOARD_CAN2_init();
 }
 
@@ -262,5 +298,4 @@ void BOARD_InitPeripherals(void)
  **********************************************************************************************************************/
 void BOARD_InitBootPeripherals(void)
 {
-  BOARD_InitPeripherals();
 }

@@ -26,6 +26,8 @@ extern "C" {
 #define BOARD_LPUART1_PERIPHERAL LPUART1
 /* Definition of the clock source frequency */
 #define BOARD_LPUART1_CLOCK_SOURCE 80000000UL
+
+/* Definitions for BOARD_InitCAN2 functional group */
 /* Definition of peripheral ID */
 #define BOARD_CAN2_PERIPHERAL CAN2
 /* Definition of the clock source frequency */
@@ -48,6 +50,8 @@ extern const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1;
  **********************************************************************************************************************/
 
 void BOARD_InitPeripherals(void);
+
+void BOARD_InitCAN2(void);
 
 /***********************************************************************************************************************
  * BOARD_InitBootPeripherals function
