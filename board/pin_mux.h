@@ -39,29 +39,35 @@ void BOARD_InitBootPins(void);
 
 /* GPIO_AD_B0_15 (coord L10), CAN2_RX/U12[4] */
 /* Routed pin properties */
-#define BOARD_INITPINS_CAN2_RX_PERIPHERAL                                   CAN2   /*!< Peripheral name */
-#define BOARD_INITPINS_CAN2_RX_SIGNAL                                         RX   /*!< Signal name */
+#define BOARD_INITPINS_CAN2_CAN2_RX_PERIPHERAL                              CAN2   /*!< Peripheral name */
+#define BOARD_INITPINS_CAN2_CAN2_RX_SIGNAL                                    RX   /*!< Signal name */
 
 /* GPIO_AD_B0_14 (coord H14), CAN2_TX/U12[1] */
 /* Routed pin properties */
-#define BOARD_INITPINS_CAN2_TX_PERIPHERAL                                   CAN2   /*!< Peripheral name */
-#define BOARD_INITPINS_CAN2_TX_SIGNAL                                         TX   /*!< Signal name */
-
-/* GPIO_AD_B0_13 (coord L14), UART1_RXD */
-/* Routed pin properties */
-#define BOARD_INITPINS_UART1_RXD_PERIPHERAL                              LPUART1   /*!< Peripheral name */
-#define BOARD_INITPINS_UART1_RXD_SIGNAL                                       RX   /*!< Signal name */
-
-/* GPIO_AD_B0_12 (coord K14), UART1_TXD */
-/* Routed pin properties */
-#define BOARD_INITPINS_UART1_TXD_PERIPHERAL                              LPUART1   /*!< Peripheral name */
-#define BOARD_INITPINS_UART1_TXD_SIGNAL                                       TX   /*!< Signal name */
+#define BOARD_INITPINS_CAN2_CAN2_TX_PERIPHERAL                              CAN2   /*!< Peripheral name */
+#define BOARD_INITPINS_CAN2_CAN2_TX_SIGNAL                                    TX   /*!< Signal name */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *
  */
-void BOARD_InitPins(void);
+void BOARD_InitPins_CAN2(void);
+
+/* GPIO_AD_B0_13 (coord L14), UART1_RXD */
+/* Routed pin properties */
+#define BOARD_INITPINS_UART1_UART1_RXD_PERIPHERAL                        LPUART1   /*!< Peripheral name */
+#define BOARD_INITPINS_UART1_UART1_RXD_SIGNAL                                 RX   /*!< Signal name */
+
+/* GPIO_AD_B0_12 (coord K14), UART1_TXD */
+/* Routed pin properties */
+#define BOARD_INITPINS_UART1_UART1_TXD_PERIPHERAL                        LPUART1   /*!< Peripheral name */
+#define BOARD_INITPINS_UART1_UART1_TXD_SIGNAL                                 TX   /*!< Signal name */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void BOARD_InitPins_UART1(void);
 
 #if defined(__cplusplus)
 }

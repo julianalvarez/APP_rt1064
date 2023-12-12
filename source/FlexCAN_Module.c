@@ -42,7 +42,10 @@ int main(void) {
     BOARD_ConfigMPU();
 
     CLOCK_EnableClock(kCLOCK_Iomuxc);
-    BOARD_InitBootPins();
+    BOARD_InitPins_UART1();
+    BOARD_InitPins_CAN2();
+	BOARD_InitUART();
+
 	//BOARD_InitPinsLPUART();
 
     BOARD_InitBootClocks();

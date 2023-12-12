@@ -13,7 +13,7 @@ mcu_data: ksdk2_0
 processor_version: 14.0.0
 board: MIMXRT1064-EVK
 functionalGroups:
-- name: BOARD_InitPeripherals
+- name: BOARD_InitUART
   UUID: 1c6563a6-c68b-40e5-8828-2853c99f95fa
   id_prefix: BOARD_
   selectedCore: core0
@@ -55,7 +55,7 @@ component:
 #include "peripherals.h"
 
 /***********************************************************************************************************************
- * BOARD_InitPeripherals functional group
+ * BOARD_InitUART functional group
  **********************************************************************************************************************/
 /***********************************************************************************************************************
  * LPUART1 initialization code
@@ -68,7 +68,7 @@ instance:
 - mode: 'polling'
 - custom_name_enabled: 'false'
 - type_id: 'lpuart_65a7af1f2e04f737cb1c75e9f68585ac'
-- functional_group: 'BOARD_InitPeripherals'
+- functional_group: 'BOARD_InitUART'
 - peripheral: 'LPUART1'
 - config_sets:
   - lpuartConfig_t:
@@ -130,7 +130,7 @@ instance:
 - mode: 'general'
 - custom_name_enabled: 'false'
 - type_id: 'nvic_57b5eef3774cc60acaede6f5b8bddc67'
-- functional_group: 'BOARD_InitPeripherals'
+- functional_group: 'BOARD_InitUART'
 - peripheral: 'NVIC'
 - config_sets:
   - nvic:
@@ -281,7 +281,7 @@ static void BOARD_CAN2_init(void) {
 /***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
-void BOARD_InitPeripherals(void)
+void BOARD_InitUART(void)
 {
   /* Initialize components */
   BOARD_LPUART1_init();
