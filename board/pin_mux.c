@@ -224,7 +224,7 @@ void BOARD_InitBootPins(void) {
 /*
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitPins_CAN2:
-- options: {callFromInitBoot: 'false', coreID: core0, enableClock: 'true'}
+- options: {callFromInitBoot: 'false', coreID: core0, enableClock: 'false'}
 - pin_list:
   - {pin_num: L10, peripheral: CAN2, signal: RX, pin_signal: GPIO_AD_B0_15}
   - {pin_num: H14, peripheral: CAN2, signal: TX, pin_signal: GPIO_AD_B0_14}
@@ -238,8 +238,6 @@ BOARD_InitPins_CAN2:
  *
  * END ****************************************************************************************************************/
 void BOARD_InitPins_CAN2(void) {
-  CLOCK_EnableClock(kCLOCK_Iomuxc);           
-
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_14_FLEXCAN2_TX, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_15_FLEXCAN2_RX, 0U); 
 }
@@ -248,7 +246,7 @@ void BOARD_InitPins_CAN2(void) {
 /*
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitPins_UART1:
-- options: {callFromInitBoot: 'false', coreID: core0, enableClock: 'true'}
+- options: {callFromInitBoot: 'false', coreID: core0, enableClock: 'false'}
 - pin_list:
   - {pin_num: L14, peripheral: LPUART1, signal: RX, pin_signal: GPIO_AD_B0_13}
   - {pin_num: K14, peripheral: LPUART1, signal: TX, pin_signal: GPIO_AD_B0_12}
@@ -262,8 +260,6 @@ BOARD_InitPins_UART1:
  *
  * END ****************************************************************************************************************/
 void BOARD_InitPins_UART1(void) {
-  CLOCK_EnableClock(kCLOCK_Iomuxc);           
-
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_12_LPUART1_TX, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_13_LPUART1_RX, 0U); 
 }

@@ -20,6 +20,7 @@ component/serial_manager \
 component/uart \
 device \
 drivers \
+lib/hal \
 source \
 startup \
 utilities \

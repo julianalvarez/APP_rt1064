@@ -227,7 +227,7 @@
                <options>
                   <callFromInitBoot>false</callFromInitBoot>
                   <coreID>core0</coreID>
-                  <enableClock>true</enableClock>
+                  <enableClock>false</enableClock>
                </options>
                <dependencies>
                   <dependency resourceType="Peripheral" resourceId="CAN2" description="Peripheral CAN2 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_CAN2">
@@ -256,7 +256,7 @@
                <options>
                   <callFromInitBoot>false</callFromInitBoot>
                   <coreID>core0</coreID>
-                  <enableClock>true</enableClock>
+                  <enableClock>false</enableClock>
                </options>
                <dependencies>
                   <dependency resourceType="Peripheral" resourceId="LPUART1" description="Peripheral LPUART1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_UART1">
