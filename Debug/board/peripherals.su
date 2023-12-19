@@ -3,8 +3,10 @@ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\d
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_common_arm.h:732:24:DisableGlobalIRQ	16	static
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_common_arm.h:758:20:EnableGlobalIRQ	24	static
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_flexcan.h:1765:20:FLEXCAN_EnableMbInterrupts	40	static
-../board/peripherals.c:118:13:BOARD_LPUART1_init	8	static
-../board/peripherals.c:269:13:BOARD_CAN2_init	8	static
-../board/peripherals.c:284:6:BOARD_InitUART	8	static
-../board/peripherals.c:290:6:BOARD_InitCAN2	8	static
-../board/peripherals.c:299:6:BOARD_InitBootPeripherals	4	static
+../board/peripherals.c:122:13:BOARD_LPUART1_init	8	static
+../board/peripherals.c:273:13:BOARD_CAN2_init	8	static
+../board/peripherals.c:386:13:BOARD_ADC1_init	8	static
+../board/peripherals.c:396:6:BOARD_InitUART	8	static
+../board/peripherals.c:402:6:BOARD_InitCAN2	8	static
+../board/peripherals.c:408:6:BOARD_InitADC1	8	static
+../board/peripherals.c:417:6:BOARD_InitBootPeripherals	4	static

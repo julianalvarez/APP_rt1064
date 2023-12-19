@@ -5,11 +5,10 @@
  * Generated linker script file for MIMXRT1064xxxxA
  * Created from library.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.8.0 [Build 1165] [2023-07-26] on 13 dic. 2023 15:15:04
+ * MCUXpresso IDE v11.8.0 [Build 1165] [2023-07-26] on 19 dic. 2023 11:59:43
  */
 
 GROUP (
-  "libcr_nohost_nf.a"
   "libcr_c.a"
   "libcr_eabihelpers.a"
   "libgcc.a"

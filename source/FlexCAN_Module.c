@@ -21,6 +21,7 @@
 #include "FlexCAN_Module.h"
 #include "include/j1939.h"
 #include "time.h"
+#include "fsl_adc.h"
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
@@ -37,7 +38,6 @@ void CAN_send_Msg(uint32_t ctrl);
 
 /* Functions ******************************************************************/
 int main(void) {
-
     /* Init board hardware. */
     BOARD_ConfigMPU();
 
@@ -45,6 +45,7 @@ int main(void) {
 
     BOARD_InitPins_UART1();
     BOARD_InitPins_CAN2();
+    BOARD_InitPins_ADC1();
     BOARD_InitBootClocks();
 
     TIME_Init(1000U);
@@ -67,10 +68,9 @@ int main(void) {
     /* Init FSL debug console. */
     BOARD_InitDebugConsole();
 #endif
-
+    double a = 0;
     CANMSG_ABGC_Init(0x0);
     PRINTF("Init CAN2\r\n");
-
     /* Enter an infinite loop*/
     while(1){
 
@@ -78,6 +78,10 @@ int main(void) {
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
     	if(mode == MODE_PERIODIC){
     			CAN_send_Msg(0);
+    			//ADC_ClearStatusFlags(BOARD_ADC1_PERIPHERAL,0);
+    			a = ADC_GetChannelConversionValue(BOARD_ADC1_PERIPHERAL,0)*3.3/4095;
+    			PRINTF("------ %f \r\n", a);
+
     	}
 
 		for (i = 0; i < 40000000U; i++)

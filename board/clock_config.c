@@ -96,6 +96,7 @@ settings:
 - {id: CCM.FLEXSPI2_SEL.sel, value: CCM_ANALOG.PLL3_PFD0_CLK}
 - {id: CCM.FLEXSPI_PODF.scale, value: '2', locked: true}
 - {id: CCM.FLEXSPI_SEL.sel, value: CCM_ANALOG.PLL3_PFD0_CLK}
+- {id: CCM.IPG_PODF.scale, value: '4', locked: true}
 - {id: CCM.LCDIF_PODF.scale, value: '4', locked: true}
 - {id: CCM.LCDIF_PRED.scale, value: '2', locked: true}
 - {id: CCM.LPSPI_PODF.scale, value: '5', locked: true}

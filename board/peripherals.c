@@ -21,6 +21,10 @@ functionalGroups:
   UUID: bc675702-d6f1-4fcd-bc7c-696a0b730ccb
   id_prefix: BOARD_
   selectedCore: core0
+- name: BOARD_InitADC1
+  UUID: 414a41c9-bd23-4116-a084-d43e6b1e154c
+  id_prefix: BOARD_
+  selectedCore: core0
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
@@ -279,6 +283,114 @@ static void BOARD_CAN2_init(void) {
 }
 
 /***********************************************************************************************************************
+ * BOARD_InitADC1 functional group
+ **********************************************************************************************************************/
+/***********************************************************************************************************************
+ * NVIC_3 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'NVIC_3'
+- type: 'nvic'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'nvic_57b5eef3774cc60acaede6f5b8bddc67'
+- functional_group: 'BOARD_InitADC1'
+- peripheral: 'NVIC'
+- config_sets:
+  - nvic:
+    - interrupt_table:
+      - 0: []
+    - interrupts: []
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+
+/* Empty initialization function (commented out)
+static void BOARD_NVIC_3_init(void) {
+} */
+
+/***********************************************************************************************************************
+ * ADC1 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'ADC1'
+- type: 'adc_12b1msps_sar'
+- mode: 'ADC_GENERAL'
+- custom_name_enabled: 'false'
+- type_id: 'adc_12b1msps_sar_6a490e886349a7b2b07bed10ce7b299b'
+- functional_group: 'BOARD_InitADC1'
+- peripheral: 'ADC1'
+- config_sets:
+  - fsl_adc:
+    - clockConfig:
+      - clockSource: 'kADC_ClockSourceIPG'
+      - clockSourceFreq: 'BOARD_BootClockRUN_528M'
+      - clockDriver: 'kADC_ClockDriver4'
+      - samplePeriodMode: 'kADC_SamplePeriodShort2Clocks'
+      - enableAsynchronousClockOutput: 'false'
+    - conversionConfig:
+      - resolution: 'kADC_Resolution12Bit'
+      - hardwareAverageMode: 'kADC_HardwareAverageDisable'
+      - enableHardwareTrigger: 'software'
+      - enableHighSpeed: 'false'
+      - enableLowPower: 'false'
+      - enableContinuousConversion: 'true'
+      - enableOverWrite: 'false'
+      - enableDma: 'false'
+    - resultingTime: []
+    - resultCorrection:
+      - doAutoCalibration: 'false'
+      - offset: '0'
+    - hardwareCompareConfiguration:
+      - hardwareCompareMode: 'disabled'
+      - value1: '0'
+      - value2: '0'
+    - enableInterrupt: 'false'
+    - adc_interrupt:
+      - IRQn: 'ADC1_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - adc_channels_config:
+      - 0:
+        - channelNumber: 'IN.0'
+        - channelName: ''
+        - channelGroup: '0'
+        - initializeChannel: 'true'
+        - enableInterruptOnConversionCompleted: 'false'
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+const adc_config_t BOARD_ADC1_config = {
+  .enableOverWrite = false,
+  .enableContinuousConversion = true,
+  .enableHighSpeed = false,
+  .enableLowPower = false,
+  .enableLongSample = false,
+  .enableAsynchronousClockOutput = false,
+  .referenceVoltageSource = kADC_ReferenceVoltageSourceAlt0,
+  .samplePeriodMode = kADC_SamplePeriodShort2Clocks,
+  .clockSource = kADC_ClockSourceIPG,
+  .clockDriver = kADC_ClockDriver4,
+  .resolution = kADC_Resolution12Bit
+};
+const adc_channel_config_t BOARD_ADC1_channels_config[1] = {
+  {
+    .channelNumber = 0U,
+    .enableInterruptOnConversionCompleted = false
+  }
+};
+static void BOARD_ADC1_init(void) {
+  /* Initialize ADC1 peripheral. */
+  ADC_Init(BOARD_ADC1_PERIPHERAL, &BOARD_ADC1_config);
+  /* Initialize ADC1 channel 0. */
+  ADC_SetChannelConfig(BOARD_ADC1_PERIPHERAL, BOARD_ADC1_CH0_CONTROL_GROUP, &BOARD_ADC1_channels_config[0]);
+}
+
+/***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 void BOARD_InitUART(void)
@@ -291,6 +403,12 @@ void BOARD_InitCAN2(void)
 {
   /* Initialize components */
   BOARD_CAN2_init();
+}
+
+void BOARD_InitADC1(void)
+{
+  /* Initialize components */
+  BOARD_ADC1_init();
 }
 
 /***********************************************************************************************************************

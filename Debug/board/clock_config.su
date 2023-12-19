@@ -9,5 +9,5 @@ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\d
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_iomuxc.h:1347:20:IOMUXC_SetSaiMClkClockSource	24	static
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\drivers/fsl_iomuxc.h:1407:20:IOMUXC_MQSConfig	24	static
 ../board/clock_config.c:40:6:BOARD_InitBootClocks	8	static
-../board/clock_config.c:171:6:BOARD_BootClockRUN	16	static
-../board/clock_config.c:632:6:BOARD_BootClockRUN_528M	16	static
+../board/clock_config.c:172:6:BOARD_BootClockRUN	16	static
+../board/clock_config.c:633:6:BOARD_BootClockRUN_528M	16	static

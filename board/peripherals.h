@@ -13,6 +13,7 @@
 #include "fsl_lpuart.h"
 #include "fsl_clock.h"
 #include "fsl_flexcan.h"
+#include "fsl_adc.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -37,6 +38,15 @@ extern "C" {
 /* CAN2 interrupt handler identifier. */
 #define BOARD_CAN2_FLEXCAN_IRQHANDLER CAN2_IRQHandler
 
+/* Definitions for BOARD_InitADC1 functional group */
+/* BOARD_InitADC1 defines for ADC1 */
+/* Definition of peripheral ID */
+#define BOARD_ADC1_PERIPHERAL ADC1
+/* Definition of special channel interconnected with ADC_ETC which takes real channel to be measured from ADC_ETC. */
+#define BOARD_ADC1_CHANNEL_DRIVEN_BY_ADC_ETC 16U
+/* Channel 0 (IN.0) conversion control group. */
+#define BOARD_ADC1_CH0_CONTROL_GROUP 0U
+
 /***********************************************************************************************************************
  * Global variables
  **********************************************************************************************************************/
@@ -44,6 +54,8 @@ extern const lpuart_config_t BOARD_LPUART1_config;
 extern const flexcan_config_t BOARD_CAN2_config;
 /* Message buffer 1 configuration structure */
 extern const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1;
+extern const adc_config_t BOARD_ADC1_config;
+extern const adc_channel_config_t BOARD_ADC1_channels_config[1];
 
 /***********************************************************************************************************************
  * Initialization functions
@@ -52,6 +64,8 @@ extern const flexcan_rx_mb_config_t BOARD_CAN2_rx_mb_config_1;
 void BOARD_InitUART(void);
 
 void BOARD_InitCAN2(void);
+
+void BOARD_InitADC1(void);
 
 /***********************************************************************************************************************
  * BOARD_InitBootPeripherals function
