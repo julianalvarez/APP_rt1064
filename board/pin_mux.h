@@ -75,6 +75,12 @@ void BOARD_InitPins_UART1(void);
 #define BOARD_INITPINS_ADC1_CSI_D6_SIGNAL                                     IN   /*!< Signal name */
 #define BOARD_INITPINS_ADC1_CSI_D6_CHANNEL                                    0U   /*!< Signal channel */
 
+/* GPIO_AD_B1_04 (coord L12), CSI_PIXCLK/J35[8]/J23[3] */
+/* Routed pin properties */
+#define BOARD_INITPINS_ADC1_CSI_PIXCLK_PERIPHERAL                           ADC1   /*!< Peripheral name */
+#define BOARD_INITPINS_ADC1_CSI_PIXCLK_SIGNAL                                 IN   /*!< Signal name */
+#define BOARD_INITPINS_ADC1_CSI_PIXCLK_CHANNEL                                9U   /*!< Signal channel */
+
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *

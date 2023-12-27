@@ -357,10 +357,16 @@ instance:
       - enable_custom_name: 'false'
     - adc_channels_config:
       - 0:
-        - channelNumber: 'IN.0'
-        - channelName: ''
+        - channelNumber: 'IN.9'
+        - channelName: 'VCC_3v'
         - channelGroup: '0'
         - initializeChannel: 'true'
+        - enableInterruptOnConversionCompleted: 'false'
+      - 1:
+        - channelNumber: 'IN.0'
+        - channelName: 'LIBRE'
+        - channelGroup: '0'
+        - initializeChannel: 'false'
         - enableInterruptOnConversionCompleted: 'false'
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
@@ -377,16 +383,20 @@ const adc_config_t BOARD_ADC1_config = {
   .clockDriver = kADC_ClockDriver4,
   .resolution = kADC_Resolution12Bit
 };
-const adc_channel_config_t BOARD_ADC1_channels_config[1] = {
+const adc_channel_config_t BOARD_ADC1_channels_config[2] = {
   {
-    .channelNumber = 0U,
+    .channelNumber = VCC_3v,
+    .enableInterruptOnConversionCompleted = false
+  },
+  {
+    .channelNumber = LIBRE,
     .enableInterruptOnConversionCompleted = false
   }
 };
 static void BOARD_ADC1_init(void) {
   /* Initialize ADC1 peripheral. */
   ADC_Init(BOARD_ADC1_PERIPHERAL, &BOARD_ADC1_config);
-  /* Initialize ADC1 channel 0. */
+  /* Initialize ADC1 channel 9. */
   ADC_SetChannelConfig(BOARD_ADC1_PERIPHERAL, BOARD_ADC1_CH0_CONTROL_GROUP, &BOARD_ADC1_channels_config[0]);
 }
 

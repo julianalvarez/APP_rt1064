@@ -271,6 +271,7 @@ BOARD_InitPins_ADC1:
 - options: {callFromInitBoot: 'false', coreID: core0, enableClock: 'false'}
 - pin_list:
   - {pin_num: J13, peripheral: ADC1, signal: 'IN, 0', pin_signal: GPIO_AD_B1_11}
+  - {pin_num: L12, peripheral: ADC1, signal: 'IN, 9', pin_signal: GPIO_AD_B1_04}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -281,6 +282,7 @@ BOARD_InitPins_ADC1:
  *
  * END ****************************************************************************************************************/
 void BOARD_InitPins_ADC1(void) {
+  IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_04_GPIO1_IO20, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_11_GPIO1_IO27, 0U); 
 }
 

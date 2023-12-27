@@ -34,6 +34,9 @@ int i = 0 ;
 ABGC_MSG_T                          tABGC;        /* TP */
 static uint8_t      primaryBus = 0;
 
+double valueADC_ch0_V = 0;
+double valueADC_ch1_V = 0;
+
 void CAN_send_Msg(uint32_t ctrl);
 
 /* Functions ******************************************************************/
@@ -44,10 +47,10 @@ int main(void) {
     CLOCK_EnableClock(kCLOCK_Iomuxc);
 
     BOARD_InitPins_UART1();
-    BOARD_InitPins_CAN2();
+
     BOARD_InitPins_ADC1();
     BOARD_InitBootClocks();
-
+    BOARD_InitUART();
     TIME_Init(1000U);
     /* CANx - Open J1939 */
 	Open_J1939 (0,                             /* Controller            */
@@ -68,23 +71,24 @@ int main(void) {
     /* Init FSL debug console. */
     BOARD_InitDebugConsole();
 #endif
-    double a = 0;
     CANMSG_ABGC_Init(0x0);
     PRINTF("Init CAN2\r\n");
     /* Enter an infinite loop*/
     while(1){
 
+    	ADC_SetChannelConfig(BOARD_ADC1_PERIPHERAL, BOARD_ADC1_CH0_CONTROL_GROUP, &BOARD_ADC1_channels_config[0]);
+    	valueADC_ch0_V = ADC_GetChannelConversionValue(BOARD_ADC1_PERIPHERAL, 0U) * 3.3 / 4095;
+    	ADC_SetChannelConfig(BOARD_ADC1_PERIPHERAL, BOARD_ADC1_CH0_CONTROL_GROUP, &BOARD_ADC1_channels_config[1]);
+    	valueADC_ch1_V = ADC_GetChannelConversionValue(BOARD_ADC1_PERIPHERAL, 0U) * 3.3 / 4095;
+
+		PRINTF("%.3fV  %.3fV\r\n", valueADC_ch0_V, valueADC_ch1_V);
     	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
     	if(mode == MODE_PERIODIC){
     			CAN_send_Msg(0);
-    			//ADC_ClearStatusFlags(BOARD_ADC1_PERIPHERAL,0);
-    			a = ADC_GetChannelConversionValue(BOARD_ADC1_PERIPHERAL,0)*3.3/4095;
-    			PRINTF("------ %f \r\n", a);
-
     	}
 
-		for (i = 0; i < 40000000U; i++)
+		for (i = 0; i < 4000000U; i++)
 		{
 			__ASM("nop");
 		}

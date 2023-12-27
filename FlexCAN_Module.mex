@@ -306,6 +306,7 @@
                </dependencies>
                <pins>
                   <pin peripheral="ADC1" signal="IN, 0" pin_num="J13" pin_signal="GPIO_AD_B1_11"/>
+                  <pin peripheral="ADC1" signal="IN, 9" pin_num="L12" pin_signal="GPIO_AD_B1_04"/>
                </pins>
             </function>
          </functions_list>
@@ -973,6 +974,11 @@
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.9" description="Signal IN, channel 9 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
+                     <feature name="routed" evaluation="">
+                        <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
                   <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.0" description="Signal IN, channel 0 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
                      <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
@@ -1027,10 +1033,17 @@
                         </struct>
                         <array name="adc_channels_config">
                            <struct name="0">
-                              <setting name="channelNumber" value="IN.0"/>
-                              <setting name="channelName" value=""/>
+                              <setting name="channelNumber" value="IN.9"/>
+                              <setting name="channelName" value="VCC_3v"/>
                               <setting name="channelGroup" value="0"/>
                               <setting name="initializeChannel" value="true"/>
+                              <setting name="enableInterruptOnConversionCompleted" value="false"/>
+                           </struct>
+                           <struct name="1">
+                              <setting name="channelNumber" value="IN.0"/>
+                              <setting name="channelName" value="LIBRE"/>
+                              <setting name="channelGroup" value="0"/>
+                              <setting name="initializeChannel" value="false"/>
                               <setting name="enableInterruptOnConversionCompleted" value="false"/>
                            </struct>
                         </array>
