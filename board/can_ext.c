@@ -21,7 +21,6 @@ int32_t init_can (uint8_t bBusNumber,uint16_t wGlobMask,
 
 			BOARD_InitPins_CAN2();
 			BOARD_InitCAN2();
-			BOARD_InitADC1();
 			FLEXCAN_SetRxMbGlobalMask(BOARD_CAN2_PERIPHERAL, FLEXCAN_RX_MB_EXT_MASK(0, 0, 0));
 		}
 		else{

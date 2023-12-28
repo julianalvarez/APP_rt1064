@@ -280,7 +280,7 @@
                   <pin peripheral="LPUART1" signal="TX" pin_num="K14" pin_signal="GPIO_AD_B0_12"/>
                </pins>
             </function>
-            <function name="BOARD_InitPins_ADC1">
+            <function name="BOARD_InitPins_ADC1_ch0">
                <description>Configures pin routing and optionally pin electrical features.</description>
                <options>
                   <callFromInitBoot>false</callFromInitBoot>
@@ -288,17 +288,17 @@
                   <enableClock>false</enableClock>
                </options>
                <dependencies>
-                  <dependency resourceType="Peripheral" resourceId="ADC1" description="Peripheral ADC1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_ADC1">
+                  <dependency resourceType="Peripheral" resourceId="ADC1" description="Peripheral ADC1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_ADC1_ch0">
                      <feature name="initialized" evaluation="equal">
                         <data>true</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1">
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch0">
                      <feature name="enabled" evaluation="equal" configuration="core0">
                         <data>true</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1">
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch0">
                      <feature name="enabled" evaluation="equal" configuration="core0">
                         <data>true</data>
                      </feature>
@@ -306,6 +306,33 @@
                </dependencies>
                <pins>
                   <pin peripheral="ADC1" signal="IN, 0" pin_num="J13" pin_signal="GPIO_AD_B1_11"/>
+               </pins>
+            </function>
+            <function name="BOARD_InitPins_ADC1_ch9">
+               <description>Configures pin routing and optionally pin electrical features.</description>
+               <options>
+                  <callFromInitBoot>false</callFromInitBoot>
+                  <coreID>core0</coreID>
+                  <enableClock>false</enableClock>
+               </options>
+               <dependencies>
+                  <dependency resourceType="Peripheral" resourceId="ADC1" description="Peripheral ADC1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_ADC1_ch9">
+                     <feature name="initialized" evaluation="equal">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch9">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch9">
+                     <feature name="enabled" evaluation="equal" configuration="core0">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <pins>
                   <pin peripheral="ADC1" signal="IN, 9" pin_num="L12" pin_signal="GPIO_AD_B1_04"/>
                </pins>
             </function>
@@ -974,12 +1001,12 @@
                         <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.9" description="Signal IN, channel 9 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.0" description="Signal IN, channel 0 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
                      <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
                      </feature>
                   </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.0" description="Signal IN, channel 0 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.9" description="Signal IN, channel 9 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
                      <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
                      </feature>
@@ -1033,15 +1060,15 @@
                         </struct>
                         <array name="adc_channels_config">
                            <struct name="0">
-                              <setting name="channelNumber" value="IN.9"/>
-                              <setting name="channelName" value="VCC_3v"/>
+                              <setting name="channelNumber" value="IN.0"/>
+                              <setting name="channelName" value=""/>
                               <setting name="channelGroup" value="0"/>
                               <setting name="initializeChannel" value="true"/>
                               <setting name="enableInterruptOnConversionCompleted" value="false"/>
                            </struct>
                            <struct name="1">
-                              <setting name="channelNumber" value="IN.0"/>
-                              <setting name="channelName" value="LIBRE"/>
+                              <setting name="channelNumber" value="IN.9"/>
+                              <setting name="channelName" value=""/>
                               <setting name="channelGroup" value="0"/>
                               <setting name="initializeChannel" value="false"/>
                               <setting name="enableInterruptOnConversionCompleted" value="false"/>

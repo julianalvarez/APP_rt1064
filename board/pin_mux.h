@@ -71,21 +71,27 @@ void BOARD_InitPins_UART1(void);
 
 /* GPIO_AD_B1_11 (coord J13), SAI1_RX_BCLK/CSI_D6/J35[7]/J23[2] */
 /* Routed pin properties */
-#define BOARD_INITPINS_ADC1_CSI_D6_PERIPHERAL                               ADC1   /*!< Peripheral name */
-#define BOARD_INITPINS_ADC1_CSI_D6_SIGNAL                                     IN   /*!< Signal name */
-#define BOARD_INITPINS_ADC1_CSI_D6_CHANNEL                                    0U   /*!< Signal channel */
-
-/* GPIO_AD_B1_04 (coord L12), CSI_PIXCLK/J35[8]/J23[3] */
-/* Routed pin properties */
-#define BOARD_INITPINS_ADC1_CSI_PIXCLK_PERIPHERAL                           ADC1   /*!< Peripheral name */
-#define BOARD_INITPINS_ADC1_CSI_PIXCLK_SIGNAL                                 IN   /*!< Signal name */
-#define BOARD_INITPINS_ADC1_CSI_PIXCLK_CHANNEL                                9U   /*!< Signal channel */
+#define BOARD_INITPINS_ADC1_CH0_CSI_D6_PERIPHERAL                           ADC1   /*!< Peripheral name */
+#define BOARD_INITPINS_ADC1_CH0_CSI_D6_SIGNAL                                 IN   /*!< Signal name */
+#define BOARD_INITPINS_ADC1_CH0_CSI_D6_CHANNEL                                0U   /*!< Signal channel */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *
  */
-void BOARD_InitPins_ADC1(void);
+void BOARD_InitPins_ADC1_ch0(void);
+
+/* GPIO_AD_B1_04 (coord L12), CSI_PIXCLK/J35[8]/J23[3] */
+/* Routed pin properties */
+#define BOARD_INITPINS_ADC1_CH9_CSI_PIXCLK_PERIPHERAL                       ADC1   /*!< Peripheral name */
+#define BOARD_INITPINS_ADC1_CH9_CSI_PIXCLK_SIGNAL                             IN   /*!< Signal name */
+#define BOARD_INITPINS_ADC1_CH9_CSI_PIXCLK_CHANNEL                            9U   /*!< Signal channel */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void BOARD_InitPins_ADC1_ch9(void);
 
 #if defined(__cplusplus)
 }

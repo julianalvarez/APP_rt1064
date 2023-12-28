@@ -16,5 +16,12 @@
 
 /* Typedefs *******************************************************************/
 
+#include <adc.h>
+
+void Init_ADC  (uint32_t ctrl, uint32_t Channel);
+
+void ADC_Start (uint32_t ctrl);
+
+double ADC_Get (uint32_t ctrl, uint32_t Channel);
 
 #endif /* ADC_H_ */

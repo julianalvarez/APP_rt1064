@@ -22,6 +22,7 @@
 #include "include/j1939.h"
 #include "time.h"
 #include "fsl_adc.h"
+#include "adc.h"
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
@@ -35,7 +36,7 @@ ABGC_MSG_T                          tABGC;        /* TP */
 static uint8_t      primaryBus = 0;
 
 double valueADC_ch0_V = 0;
-double valueADC_ch1_V = 0;
+double valueADC_ch9_V = 0;
 
 void CAN_send_Msg(uint32_t ctrl);
 
@@ -48,7 +49,8 @@ int main(void) {
 
     BOARD_InitPins_UART1();
 
-    BOARD_InitPins_ADC1();
+    Init_ADC(1,0);
+    Init_ADC(1,9);
     BOARD_InitBootClocks();
     BOARD_InitUART();
     TIME_Init(1000U);
@@ -74,14 +76,13 @@ int main(void) {
     CANMSG_ABGC_Init(0x0);
     PRINTF("Init CAN2\r\n");
     /* Enter an infinite loop*/
+    ADC_Start(1);
     while(1){
 
-    	ADC_SetChannelConfig(BOARD_ADC1_PERIPHERAL, BOARD_ADC1_CH0_CONTROL_GROUP, &BOARD_ADC1_channels_config[0]);
-    	valueADC_ch0_V = ADC_GetChannelConversionValue(BOARD_ADC1_PERIPHERAL, 0U) * 3.3 / 4095;
-    	ADC_SetChannelConfig(BOARD_ADC1_PERIPHERAL, BOARD_ADC1_CH0_CONTROL_GROUP, &BOARD_ADC1_channels_config[1]);
-    	valueADC_ch1_V = ADC_GetChannelConversionValue(BOARD_ADC1_PERIPHERAL, 0U) * 3.3 / 4095;
+    	valueADC_ch0_V = ADC_Get(1,0);
+    	valueADC_ch9_V = ADC_Get(1,9);
 
-		PRINTF("%.3fV  %.3fV\r\n", valueADC_ch0_V, valueADC_ch1_V);
+		PRINTF("%.3fV  %.3fV\r\n", valueADC_ch0_V, valueADC_ch9_V);
     	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
     	if(mode == MODE_PERIODIC){

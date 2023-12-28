@@ -357,14 +357,14 @@ instance:
       - enable_custom_name: 'false'
     - adc_channels_config:
       - 0:
-        - channelNumber: 'IN.9'
-        - channelName: 'VCC_3v'
+        - channelNumber: 'IN.0'
+        - channelName: ''
         - channelGroup: '0'
         - initializeChannel: 'true'
         - enableInterruptOnConversionCompleted: 'false'
       - 1:
-        - channelNumber: 'IN.0'
-        - channelName: 'LIBRE'
+        - channelNumber: 'IN.9'
+        - channelName: ''
         - channelGroup: '0'
         - initializeChannel: 'false'
         - enableInterruptOnConversionCompleted: 'false'
@@ -385,18 +385,18 @@ const adc_config_t BOARD_ADC1_config = {
 };
 const adc_channel_config_t BOARD_ADC1_channels_config[2] = {
   {
-    .channelNumber = VCC_3v,
+    .channelNumber = 0U,
     .enableInterruptOnConversionCompleted = false
   },
   {
-    .channelNumber = LIBRE,
+    .channelNumber = 9U,
     .enableInterruptOnConversionCompleted = false
   }
 };
 static void BOARD_ADC1_init(void) {
   /* Initialize ADC1 peripheral. */
   ADC_Init(BOARD_ADC1_PERIPHERAL, &BOARD_ADC1_config);
-  /* Initialize ADC1 channel 9. */
+  /* Initialize ADC1 channel 0. */
   ADC_SetChannelConfig(BOARD_ADC1_PERIPHERAL, BOARD_ADC1_CH0_CONTROL_GROUP, &BOARD_ADC1_channels_config[0]);
 }
 

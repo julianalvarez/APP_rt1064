@@ -44,13 +44,9 @@ extern "C" {
 #define BOARD_ADC1_PERIPHERAL ADC1
 /* Definition of special channel interconnected with ADC_ETC which takes real channel to be measured from ADC_ETC. */
 #define BOARD_ADC1_CHANNEL_DRIVEN_BY_ADC_ETC 16U
-/* Definition of ADC1 channel from configuration #0 9 */
-#define VCC_3v 9U
-/* Definition of ADC1 channel from configuration #1 0 */
-#define LIBRE 0U
-/* Channel 0 (IN.9) conversion control group. */
+/* Channel 0 (IN.0) conversion control group. */
 #define BOARD_ADC1_CH0_CONTROL_GROUP 0U
-/* Channel 1 (IN.0) conversion control group. */
+/* Channel 1 (IN.9) conversion control group. */
 #define BOARD_ADC1_CH1_CONTROL_GROUP 0U
 
 /***********************************************************************************************************************
