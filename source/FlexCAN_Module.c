@@ -22,7 +22,7 @@
 #include "include/j1939.h"
 #include "time.h"
 #include "fsl_adc.h"
-//#include "adc.h"
+#include "adc.h"
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
@@ -49,8 +49,8 @@ int main(void) {
 
     BOARD_InitPins_UART1();
 
-	//Init_ADC(1,0);
-    //Init_ADC(1,9);
+	Init_ADC(1,0);
+    Init_ADC(1,9);
     BOARD_InitBootClocks();
     BOARD_InitUART();
     TIME_Init(1000U);
@@ -76,11 +76,11 @@ int main(void) {
     CANMSG_ABGC_Init(0x0);
     PRINTF("Init CAN2\r\n");
     /* Enter an infinite loop*/
-    //ADC_Start(1);
+    ADC_Start(1);
     while(1){
 
-    	//valueADC_ch0_V = ADC_Get(1,0);
-    	//valueADC_ch9_V = ADC_Get(1,9);
+    	valueADC_ch0_V = ADC_Get(1,0);
+    	valueADC_ch9_V = ADC_Get(1,9);
 
 		PRINTF("%.3fV  %.3fV\r\n", valueADC_ch0_V, valueADC_ch9_V);
     	Processor_J1939();
