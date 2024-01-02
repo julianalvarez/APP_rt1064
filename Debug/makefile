@@ -12,13 +12,12 @@ RM := rm -rf
 -include utilities/subdir.mk
 -include startup/subdir.mk
 -include source/subdir.mk
--include lib/hal/subdir.mk
+-include hal/subdir.mk
 -include drivers/subdir.mk
 -include device/subdir.mk
 -include component/uart/subdir.mk
 -include component/serial_manager/subdir.mk
 -include component/lists/subdir.mk
--include board/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
@@ -51,7 +50,7 @@ main-build: FlexCAN_Module.axf
 FlexCAN_Module.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\FlexCAN_Module\lib" -Xlinker -Map="FlexCAN_Module.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T FlexCAN_Module_Debug.ld -o "FlexCAN_Module.axf" $(OBJS) $(USER_OBJS) $(LIBS) -lj1939_STEER_LIB
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\Debug" -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB\Debug" -Xlinker -Map="FlexCAN_Module.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T FlexCAN_Module_Debug.ld -o "FlexCAN_Module.axf" $(OBJS) $(USER_OBJS) $(LIBS) -lCSP_rt1064 -lj1939_STEER_LIB
 	@echo 'Finished building target: $@'
 	@echo ' '
 

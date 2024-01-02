@@ -14,13 +14,12 @@ OBJS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-board \
 component/lists \
 component/serial_manager \
 component/uart \
 device \
 drivers \
-lib/hal \
+hal \
 source \
 startup \
 utilities \

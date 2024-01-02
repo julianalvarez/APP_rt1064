@@ -18,11 +18,8 @@
       <generate_registers_defines>false</generate_registers_defines>
    </preferences>
    <tools>
-      <pins name="Pins" version="14.0" enabled="true" update_project_code="true">
-         <generated_project_files>
-            <file path="board/pin_mux.c" update_enabled="true"/>
-            <file path="board/pin_mux.h" update_enabled="true"/>
-         </generated_project_files>
+      <pins name="Pins" version="14.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
          <pins_profile>
             <processor_version>14.0.0</processor_version>
             <pin_labels>
@@ -229,23 +226,7 @@
                   <coreID>core0</coreID>
                   <enableClock>false</enableClock>
                </options>
-               <dependencies>
-                  <dependency resourceType="Peripheral" resourceId="CAN2" description="Peripheral CAN2 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_CAN2">
-                     <feature name="initialized" evaluation="equal">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_CAN2">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_CAN2">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-               </dependencies>
+               <dependencies/>
                <pins>
                   <pin peripheral="CAN2" signal="RX" pin_num="L10" pin_signal="GPIO_AD_B0_15"/>
                   <pin peripheral="CAN2" signal="TX" pin_num="H14" pin_signal="GPIO_AD_B0_14"/>
@@ -258,23 +239,7 @@
                   <coreID>core0</coreID>
                   <enableClock>false</enableClock>
                </options>
-               <dependencies>
-                  <dependency resourceType="Peripheral" resourceId="LPUART1" description="Peripheral LPUART1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_UART1">
-                     <feature name="initialized" evaluation="equal">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_UART1">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_UART1">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-               </dependencies>
+               <dependencies/>
                <pins>
                   <pin peripheral="LPUART1" signal="RX" pin_num="L14" pin_signal="GPIO_AD_B0_13"/>
                   <pin peripheral="LPUART1" signal="TX" pin_num="K14" pin_signal="GPIO_AD_B0_12"/>
@@ -287,23 +252,7 @@
                   <coreID>core0</coreID>
                   <enableClock>false</enableClock>
                </options>
-               <dependencies>
-                  <dependency resourceType="Peripheral" resourceId="ADC1" description="Peripheral ADC1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_ADC1_ch0">
-                     <feature name="initialized" evaluation="equal">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch0">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch0">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-               </dependencies>
+               <dependencies/>
                <pins>
                   <pin peripheral="ADC1" signal="IN, 0" pin_num="J13" pin_signal="GPIO_AD_B1_11"/>
                </pins>
@@ -315,34 +264,15 @@
                   <coreID>core0</coreID>
                   <enableClock>false</enableClock>
                </options>
-               <dependencies>
-                  <dependency resourceType="Peripheral" resourceId="ADC1" description="Peripheral ADC1 is not initialized" problem_level="1" source="Pins:BOARD_InitPins_ADC1_ch9">
-                     <feature name="initialized" evaluation="equal">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch9">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="SWComponent" resourceId="platform.drivers.iomuxc" description="Pins initialization requires the IOMUXC Driver in the project." problem_level="2" source="Pins:BOARD_InitPins_ADC1_ch9">
-                     <feature name="enabled" evaluation="equal" configuration="core0">
-                        <data>true</data>
-                     </feature>
-                  </dependency>
-               </dependencies>
+               <dependencies/>
                <pins>
                   <pin peripheral="ADC1" signal="IN, 9" pin_num="L12" pin_signal="GPIO_AD_B1_04"/>
                </pins>
             </function>
          </functions_list>
       </pins>
-      <clocks name="Clocks" version="12.0" enabled="true" update_project_code="true">
-         <generated_project_files>
-            <file path="board/clock_config.c" update_enabled="true"/>
-            <file path="board/clock_config.h" update_enabled="true"/>
-         </generated_project_files>
+      <clocks name="Clocks" version="12.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
          <clocks_profile>
             <processor_version>14.0.0</processor_version>
          </clocks_profile>
@@ -633,11 +563,8 @@
             </clock_configuration>
          </clock_configurations>
       </clocks>
-      <dcdx name="DCDx" version="3.0" enabled="true" update_project_code="true">
-         <generated_project_files>
-            <file path="board/dcd.c" update_enabled="true"/>
-            <file path="board/dcd.h" update_enabled="true"/>
-         </generated_project_files>
+      <dcdx name="DCDx" version="3.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
          <dcdx_profile>
             <processor_version>14.0.0</processor_version>
             <output_format>c_array</output_format>
@@ -780,300 +707,21 @@
             </dcdx_configuration>
          </dcdx_configurations>
       </dcdx>
-      <periphs name="Peripherals" version="13.0" enabled="true" update_project_code="true">
-         <dependencies>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpuart" description="LPUART Driver is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.lpuart" description="An unsupported version of the LPUART Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="greaterOrEqual">
-                  <data type="Version">2.5.3</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcan" description="FLEXCAN Driver is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcan" description="An unsupported version of the FLEXCAN Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="greaterOrEqual">
-                  <data type="Version">2.10.0</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.adc_12b1msps_sar" description="ADC Driver is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.adc_12b1msps_sar" description="An unsupported version of the ADC Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="equivalent">
-                  <data type="Version">2.0.0</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="Tool" resourceId="Pins" description="The Pins tool is required by the Peripherals tool, but it is disabled." problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data>true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="Tool" resourceId="Clocks" description="The Clocks tool is required by the Peripherals tool, but it is disabled." problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data>true</data>
-               </feature>
-            </dependency>
-         </dependencies>
-         <generated_project_files>
-            <file path="board/peripherals.c" update_enabled="true"/>
-            <file path="board/peripherals.h" update_enabled="true"/>
-         </generated_project_files>
+      <periphs name="Peripherals" version="13.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
          <peripherals_profile>
             <processor_version>14.0.0</processor_version>
          </peripherals_profile>
          <functional_groups>
-            <functional_group name="BOARD_InitUART" uuid="1c6563a6-c68b-40e5-8828-2853c99f95fa" called_from_default_init="false" id_prefix="BOARD_" core="core0">
+            <functional_group name="PeriphsFunc_1" uuid="e28f15e0-4b58-4677-b871-d48249eab30b" called_from_default_init="false" id_prefix="" core="core0">
                <description></description>
                <options/>
-               <dependencies>
-                  <dependency resourceType="ClockOutput" resourceId="UART_CLK_ROOT" description="UART_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitUART">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="LPUART1.uart_tx" description="Signal TX is not routed." problem_level="1" source="Peripherals:BOARD_InitUART">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="LPUART1.uart_rx" description="Signal RX is not routed." problem_level="1" source="Peripherals:BOARD_InitUART">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-               </dependencies>
+               <dependencies/>
                <instances>
-                  <instance name="LPUART1" uuid="61db4cb5-66a7-49c5-aacf-ae468c9089e3" type="lpuart" type_id="lpuart_65a7af1f2e04f737cb1c75e9f68585ac" mode="polling" peripheral="LPUART1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="lpuartConfig_t" quick_selection="QuickSelection1">
-                        <struct name="lpuartConfig">
-                           <setting name="clockSource" value="LpuartClock"/>
-                           <setting name="lpuartSrcClkFreq" value="ClocksTool_DefaultInit"/>
-                           <setting name="baudRate_Bps" value="115200"/>
-                           <setting name="parityMode" value="kLPUART_ParityDisabled"/>
-                           <setting name="dataBitsCount" value="kLPUART_EightDataBits"/>
-                           <setting name="isMsb" value="false"/>
-                           <setting name="stopBitCount" value="kLPUART_OneStopBit"/>
-                           <setting name="enableMatchAddress1" value="false"/>
-                           <setting name="matchAddress1" value="0"/>
-                           <setting name="enableMatchAddress2" value="false"/>
-                           <setting name="matchAddress2" value="0"/>
-                           <setting name="txFifoWatermark" value="0"/>
-                           <setting name="rxFifoWatermark" value="1"/>
-                           <setting name="enableRxRTS" value="false"/>
-                           <setting name="enableTxCTS" value="false"/>
-                           <setting name="txCtsSource" value="kLPUART_CtsSourcePin"/>
-                           <setting name="txCtsConfig" value="kLPUART_CtsSampleAtStart"/>
-                           <setting name="rxIdleType" value="kLPUART_IdleTypeStartBit"/>
-                           <setting name="rxIdleConfig" value="kLPUART_IdleCharacter1"/>
-                           <setting name="enableTx" value="true"/>
-                           <setting name="enableRx" value="true"/>
-                        </struct>
-                     </config_set>
-                  </instance>
-                  <instance name="NVIC_2" uuid="2577c9ad-e187-4053-95f3-7c59cbecc6c7" type="nvic" type_id="nvic_57b5eef3774cc60acaede6f5b8bddc67" mode="general" peripheral="NVIC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="NVIC" uuid="def845bd-ec20-44f0-a2a1-6ca40b8896f2" type="nvic" type_id="nvic_57b5eef3774cc60acaede6f5b8bddc67" mode="general" peripheral="NVIC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="nvic">
-                        <array name="interrupt_table">
-                           <struct name="0"/>
-                        </array>
+                        <array name="interrupt_table"/>
                         <array name="interrupts"/>
-                     </config_set>
-                  </instance>
-               </instances>
-            </functional_group>
-            <functional_group name="BOARD_InitCAN2" uuid="bc675702-d6f1-4fcd-bc7c-696a0b730ccb" called_from_default_init="false" id_prefix="BOARD_" core="core0">
-               <description></description>
-               <options/>
-               <dependencies>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN2.can_rxd" description="Signal RX is not routed." problem_level="1" source="Peripherals:BOARD_InitCAN2">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN2.can_txd" description="Signal TX is not routed." problem_level="1" source="Peripherals:BOARD_InitCAN2">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="1" source="Peripherals:BOARD_InitCAN2">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitCAN2">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-               </dependencies>
-               <instances>
-                  <instance name="NVIC" uuid="523e0bdb-7b5a-4e76-836f-a1bedcd259cb" type="nvic" type_id="nvic_57b5eef3774cc60acaede6f5b8bddc67" mode="general" peripheral="NVIC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="nvic">
-                        <array name="interrupt_table">
-                           <struct name="0"/>
-                        </array>
-                        <array name="interrupts"/>
-                     </config_set>
-                  </instance>
-                  <instance name="CAN2" uuid="b4cec6e9-a70a-48b4-948b-b8955db9767b" type="flexcan" type_id="flexcan_5cab76b676858377b40de2b864152fd8" mode="interrupts" peripheral="CAN2" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="interruptsCfg">
-                        <setting name="messageBufferIrqs" value="2"/>
-                        <setting name="messageBufferIrqs2" value="0"/>
-                        <set name="interruptsEnable">
-                           <selected/>
-                        </set>
-                        <setting name="enable_irq" value="true"/>
-                        <struct name="interrupt_shared">
-                           <setting name="IRQn" value="CAN2_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
-                           <setting name="enable_priority" value="false"/>
-                           <setting name="priority" value="0"/>
-                           <setting name="enable_custom_name" value="false"/>
-                        </struct>
-                     </config_set>
-                     <config_set name="fsl_flexcan">
-                        <struct name="can_config">
-                           <setting name="clockSource" value="kFLEXCAN_ClkSrcOsc"/>
-                           <setting name="clockSourceFreq" value="ClocksTool_DefaultInit"/>
-                           <setting name="wakeupSrc" value="kFLEXCAN_WakeupSrcUnfiltered"/>
-                           <setting name="baudRate" value="250000"/>
-                           <setting name="maxMbNum" value="16"/>
-                           <setting name="enableLoopBack" value="false"/>
-                           <setting name="enableTimerSync" value="true"/>
-                           <setting name="enableSelfWakeup" value="false"/>
-                           <setting name="enableIndividMask" value="false"/>
-                           <setting name="disableSelfReception" value="true"/>
-                           <setting name="enableListenOnlyMode" value="false"/>
-                           <setting name="enableSupervisorMode" value="false"/>
-                           <struct name="timingConfig">
-                              <setting name="propSeg" value="2"/>
-                              <setting name="phaseSeg1" value="4"/>
-                              <setting name="phaseSeg2" value="3"/>
-                              <setting name="rJumpwidth" value="2"/>
-                              <struct name="bitTime"/>
-                           </struct>
-                        </struct>
-                        <setting name="enableRxFIFO" value="false"/>
-                        <struct name="rxFIFO">
-                           <setting name="idFilterTable" value=""/>
-                           <setting name="idFilterNum" value="num0"/>
-                           <setting name="idFilterType" value="kFLEXCAN_RxFifoFilterTypeA"/>
-                           <setting name="priority" value="kFLEXCAN_RxFifoPrioLow"/>
-                        </struct>
-                        <array name="channels">
-                           <struct name="0">
-                              <setting name="mbID" value="1"/>
-                              <setting name="mbType" value="mbRx"/>
-                              <struct name="rxMb">
-                                 <setting name="id" value="0"/>
-                                 <setting name="format" value="kFLEXCAN_FrameFormatExtend"/>
-                                 <setting name="type" value="kFLEXCAN_FrameTypeData"/>
-                              </struct>
-                           </struct>
-                           <struct name="1">
-                              <setting name="mbID" value="2"/>
-                              <setting name="mbType" value="mbTx"/>
-                              <struct name="rxMb">
-                                 <setting name="id" value="0"/>
-                                 <setting name="format" value="kFLEXCAN_FrameFormatStandard"/>
-                                 <setting name="type" value="kFLEXCAN_FrameTypeData"/>
-                              </struct>
-                           </struct>
-                        </array>
-                     </config_set>
-                  </instance>
-               </instances>
-            </functional_group>
-            <functional_group name="BOARD_InitADC1" uuid="414a41c9-bd23-4116-a084-d43e6b1e154c" called_from_default_init="false" id_prefix="BOARD_" core="core0">
-               <description></description>
-               <options/>
-               <dependencies>
-                  <dependency resourceType="ClockOutput" resourceId="IPG_CLK_ROOT" description="IPG_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitADC1">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.0" description="Signal IN, channel 0 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
-                     <feature name="routed" evaluation="">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC1.adc_in.9" description="Signal IN, channel 9 is not routed." problem_level="1" source="Peripherals:BOARD_InitADC1">
-                     <feature name="routed" evaluation="">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-               </dependencies>
-               <instances>
-                  <instance name="NVIC_3" uuid="8fa267ac-f12c-4b17-9b30-e793dc990a37" type="nvic" type_id="nvic_57b5eef3774cc60acaede6f5b8bddc67" mode="general" peripheral="NVIC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="nvic">
-                        <array name="interrupt_table">
-                           <struct name="0"/>
-                        </array>
-                        <array name="interrupts"/>
-                     </config_set>
-                  </instance>
-                  <instance name="ADC1" uuid="a9412c46-64c3-4534-aba4-6bcfb06688f6" type="adc_12b1msps_sar" type_id="adc_12b1msps_sar_6a490e886349a7b2b07bed10ce7b299b" mode="ADC_GENERAL" peripheral="ADC1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="fsl_adc">
-                        <struct name="clockConfig">
-                           <setting name="clockSource" value="kADC_ClockSourceIPG"/>
-                           <setting name="clockSourceFreq" value="BOARD_BootClockRUN_528M"/>
-                           <setting name="clockDriver" value="kADC_ClockDriver4"/>
-                           <setting name="samplePeriodMode" value="kADC_SamplePeriodShort2Clocks"/>
-                           <setting name="enableAsynchronousClockOutput" value="false"/>
-                        </struct>
-                        <struct name="conversionConfig">
-                           <setting name="resolution" value="kADC_Resolution12Bit"/>
-                           <setting name="hardwareAverageMode" value="kADC_HardwareAverageDisable"/>
-                           <setting name="enableHardwareTrigger" value="software"/>
-                           <setting name="enableHighSpeed" value="false"/>
-                           <setting name="enableLowPower" value="false"/>
-                           <setting name="enableContinuousConversion" value="true"/>
-                           <setting name="enableOverWrite" value="false"/>
-                           <setting name="enableDma" value="false"/>
-                        </struct>
-                        <struct name="resultingTime"/>
-                        <struct name="resultCorrection">
-                           <setting name="doAutoCalibration" value="false"/>
-                           <setting name="offset" value="0"/>
-                        </struct>
-                        <struct name="hardwareCompareConfiguration">
-                           <setting name="hardwareCompareMode" value="disabled"/>
-                           <setting name="value1" value="0"/>
-                           <setting name="value2" value="0"/>
-                        </struct>
-                        <setting name="enableInterrupt" value="false"/>
-                        <struct name="adc_interrupt">
-                           <setting name="IRQn" value="ADC1_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
-                           <setting name="enable_priority" value="false"/>
-                           <setting name="priority" value="0"/>
-                           <setting name="enable_custom_name" value="false"/>
-                        </struct>
-                        <array name="adc_channels_config">
-                           <struct name="0">
-                              <setting name="channelNumber" value="IN.0"/>
-                              <setting name="channelName" value=""/>
-                              <setting name="channelGroup" value="0"/>
-                              <setting name="initializeChannel" value="true"/>
-                              <setting name="enableInterruptOnConversionCompleted" value="false"/>
-                           </struct>
-                           <struct name="1">
-                              <setting name="channelNumber" value="IN.9"/>
-                              <setting name="channelName" value=""/>
-                              <setting name="channelGroup" value="0"/>
-                              <setting name="initializeChannel" value="false"/>
-                              <setting name="enableInterruptOnConversionCompleted" value="false"/>
-                           </struct>
-                        </array>
                      </config_set>
                   </instance>
                </instances>

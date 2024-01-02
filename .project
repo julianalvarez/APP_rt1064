@@ -3,6 +3,8 @@
 	<name>FlexCAN_Module</name>
 	<comment></comment>
 	<projects>
+		<project>CSP_rt1064</project>
+		<project>j1939_STEER_LIB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
