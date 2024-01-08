@@ -41,7 +41,7 @@ double valueADC_ch9_V = 0;
 
 uint8_t ret     = 0U;
 uint32_t pwmVal = 0;
-
+int cont= 0;
 void CAN_send_Msg(uint32_t ctrl);
 
 /* Functions ******************************************************************/
@@ -59,6 +59,7 @@ int main(void) {
     BOARD_InitUART();
     TIME_Init(1000U);
     Init_PWM();
+    PWM_Start(1);
     /* CANx - Open J1939 */
 	Open_J1939 (0,                             /* Controller            */
 				true,                               /* Init Name and Address */
@@ -84,7 +85,7 @@ int main(void) {
     ADC_Start(1);
     while(1){
         pwmVal = pwmVal + 25;
-
+        cont++;
         /* Reset the duty cycle percentage*/
         if (pwmVal > 100)
         {
@@ -95,7 +96,7 @@ int main(void) {
 
 		PRINTF("%.3fV  %.3fV\r\n", valueADC_ch0_V, valueADC_ch9_V);
 		PWM_Set(0,1,pwmVal);
-        PWM_Start(1);
+
     	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
     	if(mode == MODE_PERIODIC){
