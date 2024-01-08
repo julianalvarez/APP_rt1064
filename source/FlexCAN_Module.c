@@ -23,6 +23,7 @@
 #include "time.h"
 #include "fsl_adc.h"
 #include "adc.h"
+#include "fsl_xbara.h"
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
@@ -37,6 +38,11 @@ static uint8_t      primaryBus = 0;
 
 double valueADC_ch0_V = 0;
 double valueADC_ch9_V = 0;
+
+pwm_config_t pwmConfig;
+uint8_t ret     = 0U;
+pwm_fault_param_t faultConfig;
+uint32_t pwmVal = 0;
 
 void CAN_send_Msg(uint32_t ctrl);
 
@@ -55,6 +61,17 @@ int main(void) {
     BOARD_InitUART();
     TIME_Init(1000U);
     /* CANx - Open J1939 */
+    BOARD_InitPins_PWM();
+    /* Set the PWM Fault inputs to a low value */
+    XBARA_Init(XBARA1);
+    XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputLogicHigh, kXBARA1_OutputFlexpwm1Fault0);
+    XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputLogicHigh, kXBARA1_OutputFlexpwm1Fault1);
+    XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputLogicHigh, kXBARA1_OutputFlexpwm1234Fault2);
+    XBARA_SetSignalsConnection(XBARA1, kXBARA1_InputLogicHigh, kXBARA1_OutputFlexpwm1234Fault3);
+
+    BOARD_InitPWM();
+
+
 	Open_J1939 (0,                             /* Controller            */
 				true,                               /* Init Name and Address */
 				0xE6,                      /* Address               */
@@ -78,18 +95,29 @@ int main(void) {
     /* Enter an infinite loop*/
     ADC_Start(1);
     while(1){
+        pwmVal = pwmVal + 25;
 
+        /* Reset the duty cycle percentage*/
+        if (pwmVal > 100)
+        {
+            pwmVal = 0;
+        }
     	valueADC_ch0_V = ADC_Get(1,0);
     	valueADC_ch9_V = ADC_Get(1,9);
 
 		PRINTF("%.3fV  %.3fV\r\n", valueADC_ch0_V, valueADC_ch9_V);
+
+        PWM_UpdatePwmDutycycle(BOARD_PWM1_PERIPHERAL, kPWM_Module_0, kPWM_PwmA, kPWM_SignedCenterAligned, pwmVal);
+		/* Set the load okay bit for all submodules to load registers from their buffer */
+		PWM_SetPwmLdok(BOARD_PWM1_PERIPHERAL, kPWM_Control_Module_0 , true);
+
     	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
     	if(mode == MODE_PERIODIC){
     			CAN_send_Msg(0);
     	}
 
-		for (i = 0; i < 4000000U; i++)
+		for (i = 0; i < 40000000U; i++)
 		{
 			__ASM("nop");
 		}
