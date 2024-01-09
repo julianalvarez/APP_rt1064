@@ -22,6 +22,8 @@ source/FlexCAN_Module.o source/FlexCAN_Module.d: \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\drivers/fsl_lpuart.h \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\drivers/fsl_flexcan.h \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\drivers/fsl_adc.h \
+ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_pwm.h \
+ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_common.h \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/pin_mux.h \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/clock_config.h \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\device/MIMXRT1064.h \
@@ -41,7 +43,10 @@ source/FlexCAN_Module.o source/FlexCAN_Module.d: \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB/include/canmsg/ackm_canmsg.h \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB/include/canmsg/ac_canmsg.h \
  C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/time.h \
- C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/adc.h
+ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\BSP_rt1064\source/adc_interface.h \
+ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/adc.h \
+ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB/include/types.h \
+ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/pwm.h
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/board.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/clock_config.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\drivers/fsl_common.h:
@@ -64,6 +69,8 @@ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\drivers/fsl_lpuart.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\drivers/fsl_flexcan.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\drivers/fsl_adc.h:
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_pwm.h:
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_common.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/pin_mux.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/clock_config.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\device/MIMXRT1064.h:
@@ -83,4 +90,7 @@ C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB\
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB/include/canmsg/ackm_canmsg.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB/include/canmsg/ac_canmsg.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/time.h:
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\BSP_rt1064\source/adc_interface.h:
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/adc.h:
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB/include/types.h:
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\board/pwm.h:
