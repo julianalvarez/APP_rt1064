@@ -39,9 +39,6 @@ static uint8_t      primaryBus = 0;
 double valueADC_ch0_V = 0;
 double valueADC_ch9_V = 0;
 
-uint8_t ret     = 0U;
-uint32_t pwmVal = 0;
-int cont= 0;
 void CAN_send_Msg(uint32_t ctrl);
 
 /* Functions ******************************************************************/
@@ -84,18 +81,12 @@ int main(void) {
     /* Enter an infinite loop*/
     ADC_Start(1);
     while(1){
-        pwmVal = pwmVal + 25;
-        cont++;
-        /* Reset the duty cycle percentage*/
-        if (pwmVal > 100)
-        {
-            pwmVal = 0;
-        }
+
     	valueADC_ch0_V = ADC_Get(1,0);
     	valueADC_ch9_V = ADC_Get(1,9);
 
-		PRINTF("%.3fV  %.3fV\r\n", valueADC_ch0_V, valueADC_ch9_V);
-		PWM_Set(0,1,pwmVal);
+		PRINTF("%.3fV \r\n", valueADC_ch9_V);
+		PWM_Set(0,1,msgRx.data[1]);
 
     	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
@@ -103,7 +94,7 @@ int main(void) {
     			CAN_send_Msg(0);
     	}
 
-		for (i = 0; i < 40000000U; i++)
+		for (i = 0; i < 4000000U; i++)
 		{
 			__ASM("nop");
 		}
