@@ -21,9 +21,9 @@
 #include "FlexCAN_Module.h"
 #include "include/j1939.h"
 #include "time.h"
-#include "fsl_adc.h"
 #include <adc_interface.h>
-#include "pwm.h"
+#include <board_csteer.h>
+#include "hb.h"
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
@@ -53,8 +53,7 @@ int main(void) {
     BOARD_InitBootClocks();
     BOARD_InitUART();
     TIME_Init(1000U);
-    Init_PWM();
-    PWM_Start(1);
+    HB_Init(2000);
     /* CANx - Open J1939 */
 	Open_J1939 (0,                             /* Controller            */
 				true,                               /* Init Name and Address */
@@ -81,11 +80,11 @@ int main(void) {
 
     while(1){
 
-    	valueADC_ch0_V = ADC_Get(1,0);
-    	valueADC_ch9_V = ADC_Get(1,9);
+    	//valueADC_ch0_V = ADC_Get(1,0);
+    	valueADC_ch9_V = CSTEER_GetWheelAngleVoltage();
 
 		PRINTF("%.3fV \r\n", valueADC_ch9_V);
-		PWM_Set(0,1,msgRx.data[1]);
+		HB_Set(msgRx.data[1],1);
 
     	Processor_J1939();
     	mode = msgRx.data[0] == 1 ? MODE_PERIODIC : MODE_AT_START;
