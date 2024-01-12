@@ -34,13 +34,16 @@ int main(void) {
     BOARD_ConfigMPU();
 
     CLOCK_EnableClock(kCLOCK_Iomuxc);
-
-    BOARD_InitPins_UART1();
-
     BOARD_InitBootClocks();
-    BOARD_InitUART();
+
+    UART_Init();
+
     TIME_Init(1000U);
+
     HB_Init(2000);
+
+    ADC_Iface_Init();
+
     /* CANx - Open J1939 */
 	Open_J1939 (0,                             /* Controller            */
 				true,                               /* Init Name and Address */
@@ -63,7 +66,6 @@ int main(void) {
     CANMSG_ABGC_Init(0x0);
     PRINTF("Init CAN2\r\n");
     /* Enter an infinite loop*/
-    ADC_Iface_Init();
 
     while(1){
 
