@@ -33,8 +33,7 @@ int main(void) {
     /* Init board hardware. */
     BOARD_ConfigMPU();
 
-    CLOCK_EnableClock(kCLOCK_Iomuxc);
-    BOARD_InitBootClocks();
+    CLOCK_Init();
 
     UART_Init();
 
@@ -57,16 +56,16 @@ int main(void) {
 				ECU_INSTANCE_NA,                    /* ECU_INSTANCE          */
 				MANUFACTURER_CODE_GENTEC,           /* MANUFACTURER_CODE     */
 				32);                      /* IDENTITY_NUMBER       */
-
+    PRINTF("Init CAN2\r\n");
 
 #ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
     /* Init FSL debug console. */
     BOARD_InitDebugConsole();
 #endif
-    CANMSG_ABGC_Init(0x0);
-    PRINTF("Init CAN2\r\n");
-    /* Enter an infinite loop*/
 
+    CANMSG_ABGC_Init(0x0);
+
+    /* Enter an infinite loop*/
     while(1){
 
     	//valueADC_ch0_V = ADC_Get(1,0);

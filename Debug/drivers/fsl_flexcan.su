@@ -1,8 +1,8 @@
 C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\APP_rt1064\CMSIS/core_cm7.h:1911:22:__NVIC_EnableIRQ	16	static
 ../drivers/fsl_common_arm.h:210:20:_SDK_AtomicLocalClearAndSet4Byte	48	static
-../drivers/fsl_clock.h:1497:20:CLOCK_ControlGate	32	static
-../drivers/fsl_clock.h:1514:20:CLOCK_EnableClock	16	static
-../drivers/fsl_clock.h:1524:20:CLOCK_DisableClock	16	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_clock.h:1497:20:CLOCK_ControlGate	32	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_clock.h:1514:20:CLOCK_EnableClock	16	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_clock.h:1524:20:CLOCK_DisableClock	16	static
 ../drivers/fsl_common_arm.h:514:24:EnableIRQ	24	static
 ../drivers/fsl_common_arm.h:732:24:DisableGlobalIRQ	16	static
 ../drivers/fsl_common_arm.h:758:20:EnableGlobalIRQ	24	static

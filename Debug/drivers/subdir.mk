@@ -6,7 +6,6 @@
 C_SRCS += \
 ../drivers/fsl_adc.c \
 ../drivers/fsl_adc_etc.c \
-../drivers/fsl_clock.c \
 ../drivers/fsl_common.c \
 ../drivers/fsl_common_arm.c \
 ../drivers/fsl_dmamux.c \
@@ -20,7 +19,6 @@ C_SRCS += \
 C_DEPS += \
 ./drivers/fsl_adc.d \
 ./drivers/fsl_adc_etc.d \
-./drivers/fsl_clock.d \
 ./drivers/fsl_common.d \
 ./drivers/fsl_common_arm.d \
 ./drivers/fsl_dmamux.d \
@@ -34,7 +32,6 @@ C_DEPS += \
 OBJS += \
 ./drivers/fsl_adc.o \
 ./drivers/fsl_adc_etc.o \
-./drivers/fsl_clock.o \
 ./drivers/fsl_common.o \
 ./drivers/fsl_common_arm.o \
 ./drivers/fsl_dmamux.o \
@@ -58,7 +55,7 @@ drivers/%.o: ../drivers/%.c drivers/subdir.mk
 clean: clean-drivers
 
 clean-drivers:
-	-$(RM) ./drivers/fsl_adc.d ./drivers/fsl_adc.o ./drivers/fsl_adc_etc.d ./drivers/fsl_adc_etc.o ./drivers/fsl_clock.d ./drivers/fsl_clock.o ./drivers/fsl_common.d ./drivers/fsl_common.o ./drivers/fsl_common_arm.d ./drivers/fsl_common_arm.o ./drivers/fsl_dmamux.d ./drivers/fsl_dmamux.o ./drivers/fsl_edma.d ./drivers/fsl_edma.o ./drivers/fsl_flexcan.d ./drivers/fsl_flexcan.o ./drivers/fsl_flexcan_edma.d ./drivers/fsl_flexcan_edma.o ./drivers/fsl_gpio.d ./drivers/fsl_gpio.o ./drivers/fsl_gpt.d ./drivers/fsl_gpt.o ./drivers/fsl_lpuart.d ./drivers/fsl_lpuart.o
+	-$(RM) ./drivers/fsl_adc.d ./drivers/fsl_adc.o ./drivers/fsl_adc_etc.d ./drivers/fsl_adc_etc.o ./drivers/fsl_common.d ./drivers/fsl_common.o ./drivers/fsl_common_arm.d ./drivers/fsl_common_arm.o ./drivers/fsl_dmamux.d ./drivers/fsl_dmamux.o ./drivers/fsl_edma.d ./drivers/fsl_edma.o ./drivers/fsl_flexcan.d ./drivers/fsl_flexcan.o ./drivers/fsl_flexcan_edma.d ./drivers/fsl_flexcan_edma.o ./drivers/fsl_gpio.d ./drivers/fsl_gpio.o ./drivers/fsl_gpt.d ./drivers/fsl_gpt.o ./drivers/fsl_lpuart.d ./drivers/fsl_lpuart.o
 
 .PHONY: clean-drivers
 

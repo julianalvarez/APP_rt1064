@@ -8,6 +8,12 @@
 #ifndef FLEXCAN_MODULE_H_
 #define FLEXCAN_MODULE_H_
 
+#include <stdio.h>
+
+#include "CSP_rt1064.h"
+#include "BSP_rt1064.h"
+#include "include/j1939.h"
+
 /* Defines ********************************************************************/
 #define MODE_AT_START 0
 #define MODE_PERIODIC 1

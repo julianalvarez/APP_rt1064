@@ -1,6 +1,6 @@
 ../drivers/fsl_common_arm.h:210:20:_SDK_AtomicLocalClearAndSet4Byte	48	static
-../drivers/fsl_clock.h:1497:20:CLOCK_ControlGate	32	static
-../drivers/fsl_clock.h:1514:20:CLOCK_EnableClock	16	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_clock.h:1497:20:CLOCK_ControlGate	32	static
+C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\drivers/fsl_clock.h:1514:20:CLOCK_EnableClock	16	static
 ../drivers/fsl_gpio.h:242:20:GPIO_SetPinInterruptConfig	24	static
 ../drivers/fsl_gpio.c:47:17:GPIO_GetInstance	24	static
 ../drivers/fsl_gpio.c:75:6:GPIO_PinInit	32	static

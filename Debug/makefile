@@ -50,7 +50,7 @@ main-build: APP_rt1064.axf
 APP_rt1064.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\Debug" -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB\Debug" -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\BSP_rt1064\Debug" -Xlinker -Map="APP_rt1064.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T APP_rt1064_Debug.ld -o "APP_rt1064.axf" $(OBJS) $(USER_OBJS) $(LIBS) -lCSP_rt1064 -lj1939_STEER_LIB -lBSP_rt1064
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\BSP_rt1064\Debug" -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\CSP_rt1064\Debug" -L"C:\Users\PLANTIUM\Documents\MCUXpressoIDE_11.8.0_1165\workspace\j1939_STEER_LIB\Debug" -Xlinker -Map="APP_rt1064.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T APP_rt1064_Debug.ld -o "APP_rt1064.axf" $(OBJS) $(USER_OBJS) $(LIBS) -lBSP_rt1064 -lCSP_rt1064 -lj1939_STEER_LIB
 	@echo 'Finished building target: $@'
 	@echo ' '
 
