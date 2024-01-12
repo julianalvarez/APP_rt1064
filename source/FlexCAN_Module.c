@@ -10,20 +10,7 @@
  * @brief   Application entry point.
  */
 /* Include ********************************************************************/
-#include <stdio.h>
-#include "board.h"
-#include "peripherals.h"
-#include "pin_mux.h"
-#include "clock_config.h"
-#include "MIMXRT1064.h"
-#include "fsl_debug_console.h"
-#include "can_ext.h"
 #include "FlexCAN_Module.h"
-#include "include/j1939.h"
-#include "time.h"
-#include <adc_interface.h>
-#include <board_csteer.h>
-#include "hb.h"
 
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
