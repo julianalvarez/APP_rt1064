@@ -13,11 +13,6 @@ RM := rm -rf
 -include startup/subdir.mk
 -include source/subdir.mk
 -include hal/subdir.mk
--include drivers/subdir.mk
--include device/subdir.mk
--include component/uart/subdir.mk
--include component/serial_manager/subdir.mk
--include component/lists/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
