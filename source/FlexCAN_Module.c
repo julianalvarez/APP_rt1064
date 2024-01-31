@@ -16,8 +16,12 @@
 /* TODO: insert other definitions and declarations here. */
 
 /* Prototypes *****************************************************************/
-uint8_t mode = MODE_AT_START;
 
+status_t status;
+SDK_ALIGN(static uint8_t s_nor_program_buffer[256], 4);
+static uint8_t s_nor_read_buffer[256];
+
+uint8_t mode = MODE_AT_START;
 CAN_msg msgRx;
 int i = 0 ;
 ABGC_MSG_T                          tABGC;        /* TP */
@@ -36,6 +40,8 @@ int main(void) {
     CLOCK_Init();
 
     UART_Init();
+
+    SPIFLASH_init();
 
     TIME_Init(1000U);
 
@@ -65,9 +71,72 @@ int main(void) {
 
     CANMSG_ABGC_Init(0x0);
 
+    status = SPIFLASH_read(BOARD_FLEXSPI,EXAMPLE_SECTOR * SECTOR_SIZE,(void *) s_nor_read_buffer,256);
+    if (status != kStatus_Success)
+    {
+        return status;
+    }
+    for (i = 0; i < 0xFFU; i++)
+    {
+        PRINTF("Lectura: %d\r\n",s_nor_read_buffer[i]);
+    }
+
+    // Erase sectors.
+    PRINTF("Erasing Serial NOR over FlexSPI...\r\n");
+    status = SPIFLASH_erase_sector(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE);
+    if (status != kStatus_Success)
+    {
+        PRINTF("Erase sector failure !\r\n");
+        return -1;
+    }
+
+    memset(s_nor_program_buffer, 0xFFU, sizeof(s_nor_program_buffer));
+
+    DCACHE_InvalidateByRange(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE, FLASH_PAGE_SIZE);
+
+    memcpy(s_nor_read_buffer, (void *)(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE),
+           sizeof(s_nor_read_buffer));
+
+    if (memcmp(s_nor_program_buffer, s_nor_read_buffer, sizeof(s_nor_program_buffer)))
+    {
+        PRINTF("Erase data -  read out data value incorrect !\r\n ");
+        return -1;
+    }
+    else
+    {
+        PRINTF("Erase data - successfully. \r\n");
+    }
+
+    for (i = 0; i < 0xFFU; i++)
+    {
+        s_nor_program_buffer[i] = i;
+    }
+
+    status =
+    		SPIFLASH_page_program(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE, (void *)s_nor_program_buffer);
+    if (status != kStatus_Success)
+    {
+        PRINTF("Page program failure !\r\n");
+        return -1;
+    }
+
+    DCACHE_InvalidateByRange(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE, FLASH_PAGE_SIZE);
+
+    memcpy(s_nor_read_buffer, (void *)(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE),
+           sizeof(s_nor_read_buffer));
+
+    if (memcmp(s_nor_read_buffer, s_nor_program_buffer, sizeof(s_nor_program_buffer)) != 0)
+    {
+        PRINTF("Program data -  read out data value incorrect !\r\n ");
+        return -1;
+    }
+    else
+    {
+        PRINTF("Program data - successfully. \r\n");
+    }
+
     /* Enter an infinite loop*/
     while(1){
-
     	//valueADC_ch0_V = ADC_Get(1,0);
     	valueADC_ch9_V = CSTEER_GetWheelAngleVoltage();
 
