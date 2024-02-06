@@ -18,8 +18,9 @@
 /* Prototypes *****************************************************************/
 
 status_t status;
-SDK_ALIGN(static uint8_t s_nor_program_buffer[256], 4);
-static uint8_t s_nor_read_buffer[256];
+static uint8_t data;
+static uint8_t s_nor_read_buffer[1];
+
 
 uint8_t mode = MODE_AT_START;
 CAN_msg msgRx;
@@ -71,16 +72,16 @@ int main(void) {
 
     CANMSG_ABGC_Init(0x0);
 
-    status = SPIFLASH_read(BOARD_FLEXSPI,EXAMPLE_SECTOR * SECTOR_SIZE,(void *) s_nor_read_buffer,256);
+    status = SPIFLASH_read(BOARD_FLEXSPI,EXAMPLE_SECTOR * SECTOR_SIZE + 12,(void *) s_nor_read_buffer,1);
     if (status != kStatus_Success)
     {
         return status;
     }
-    for (i = 0; i < 0xFFU; i++)
+    for (i = 0; i < 0x1U; i++)
     {
         PRINTF("Lectura: %d\r\n",s_nor_read_buffer[i]);
     }
-
+/*
     // Erase sectors.
     PRINTF("Erasing Serial NOR over FlexSPI...\r\n");
     status = SPIFLASH_erase_sector(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE);
@@ -107,33 +108,13 @@ int main(void) {
         PRINTF("Erase data - successfully. \r\n");
     }
 
-    for (i = 0; i < 0xFFU; i++)
+    for (i = 0; i < 0x1U; i++)
     {
-        s_nor_program_buffer[i] = i;
+        program_buffer[i] = i;
     }
-
-    status =
-    		SPIFLASH_page_program(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE, (void *)s_nor_program_buffer);
-    if (status != kStatus_Success)
-    {
-        PRINTF("Page program failure !\r\n");
-        return -1;
-    }
-
-    DCACHE_InvalidateByRange(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE, FLASH_PAGE_SIZE);
-
-    memcpy(s_nor_read_buffer, (void *)(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE),
-           sizeof(s_nor_read_buffer));
-
-    if (memcmp(s_nor_read_buffer, s_nor_program_buffer, sizeof(s_nor_program_buffer)) != 0)
-    {
-        PRINTF("Program data -  read out data value incorrect !\r\n ");
-        return -1;
-    }
-    else
-    {
-        PRINTF("Program data - successfully. \r\n");
-    }
+*/
+    data = 4;
+    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 12, data);
 
     /* Enter an infinite loop*/
     while(1){
