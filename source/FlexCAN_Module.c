@@ -17,7 +17,7 @@
 
 /* Prototypes *****************************************************************/
 
-status_t status;
+int8_t status;
 static uint8_t data;
 static uint8_t s_nor_read_buffer[1];
 uint8_t *buff;
@@ -105,24 +105,21 @@ int main(void) {
     }
 */
     data = 4;
-    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 15, data);
-    if (status != kStatus_Success)
+    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 16, data);
+    if (status != FLASH_COMPLETE)
     {
         PRINTF("Byte program failure !\r\n");
         return -1;
     }
 
-    buff = (uint8_t *) 0x70080000 + 15;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+    buff = (uint8_t *) 0x70080000 + 16;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
 
-    status = SPIFLASH_read(BOARD_FLEXSPI,EXAMPLE_SECTOR * SECTOR_SIZE + 15,(void *) s_nor_read_buffer,1);
     if (status != kStatus_Success)
     {
         return status;
     }
 
     PRINTF("Valor del puntero: %d \r\n", *buff);
-    PRINTF("Valor del array con SPIFLASH_read: %d \r\n", s_nor_read_buffer[0]);
-
 
     msgRx.data[1] = 0;
 
