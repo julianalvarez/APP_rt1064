@@ -50,6 +50,11 @@ int main(void) {
 
     ADC_Iface_Init();
 
+#ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
+    /* Init FSL debug console. */
+    BOARD_InitDebugConsole();
+#endif
+
     /* CANx - Open J1939 */
 	Open_J1939 (0,                             /* Controller            */
 				true,                               /* Init Name and Address */
@@ -64,11 +69,6 @@ int main(void) {
 				MANUFACTURER_CODE_GENTEC,           /* MANUFACTURER_CODE     */
 				32);                      /* IDENTITY_NUMBER       */
     PRINTF("Init CAN2\r\n");
-
-#ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
-    /* Init FSL debug console. */
-    BOARD_InitDebugConsole();
-#endif
 
     CANMSG_ABGC_Init(0x0);
 
@@ -115,6 +115,11 @@ int main(void) {
 */
     data = 4;
     status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 12, data);
+    if (status != kStatus_Success)
+    {
+        PRINTF("Byte program failure !\r\n");
+        return -1;
+    }
 
     /* Enter an infinite loop*/
     while(1){
