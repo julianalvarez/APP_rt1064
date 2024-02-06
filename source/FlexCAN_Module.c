@@ -20,7 +20,7 @@
 status_t status;
 static uint8_t data;
 static uint8_t s_nor_read_buffer[1];
-
+uint8_t *buff;
 
 uint8_t mode = MODE_AT_START;
 CAN_msg msgRx;
@@ -72,15 +72,6 @@ int main(void) {
 
     CANMSG_ABGC_Init(0x0);
 
-    status = SPIFLASH_read(BOARD_FLEXSPI,EXAMPLE_SECTOR * SECTOR_SIZE + 12,(void *) s_nor_read_buffer,1);
-    if (status != kStatus_Success)
-    {
-        return status;
-    }
-    for (i = 0; i < 0x1U; i++)
-    {
-        PRINTF("Lectura: %d\r\n",s_nor_read_buffer[i]);
-    }
 /*
     // Erase sectors.
     PRINTF("Erasing Serial NOR over FlexSPI...\r\n");
@@ -114,12 +105,26 @@ int main(void) {
     }
 */
     data = 4;
-    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 12, data);
+    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 15, data);
     if (status != kStatus_Success)
     {
         PRINTF("Byte program failure !\r\n");
         return -1;
     }
+
+    buff = (uint8_t *) 0x70080000 + 15;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+
+    status = SPIFLASH_read(BOARD_FLEXSPI,EXAMPLE_SECTOR * SECTOR_SIZE + 15,(void *) s_nor_read_buffer,1);
+    if (status != kStatus_Success)
+    {
+        return status;
+    }
+
+    PRINTF("Valor del puntero: %d \r\n", *buff);
+    PRINTF("Valor del array con SPIFLASH_read: %d \r\n", s_nor_read_buffer[0]);
+
+
+    msgRx.data[1] = 0;
 
     /* Enter an infinite loop*/
     while(1){
