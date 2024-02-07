@@ -18,9 +18,9 @@
 /* Prototypes *****************************************************************/
 
 int8_t status;
-static uint8_t data;
-static uint8_t s_nor_read_buffer[1];
-uint8_t *buff;
+uint8_t data8;
+uint8_t data16;
+uint8_t *buff_read;
 
 uint8_t mode = MODE_AT_START;
 CAN_msg msgRx;
@@ -72,57 +72,33 @@ int main(void) {
 
     CANMSG_ABGC_Init(0x0);
 
-/*
     // Erase sectors.
     PRINTF("Erasing Serial NOR over FlexSPI...\r\n");
     status = SPIFLASH_erase_sector(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE);
-    if (status != kStatus_Success)
+    if (status != FLASH_COMPLETE)
     {
         PRINTF("Erase sector failure !\r\n");
         return -1;
     }
 
-    memset(s_nor_program_buffer, 0xFFU, sizeof(s_nor_program_buffer));
-
-    DCACHE_InvalidateByRange(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE, FLASH_PAGE_SIZE);
-
-    memcpy(s_nor_read_buffer, (void *)(EXAMPLE_FLEXSPI_AMBA_BASE + EXAMPLE_SECTOR * SECTOR_SIZE),
-           sizeof(s_nor_read_buffer));
-
-    if (memcmp(s_nor_program_buffer, s_nor_read_buffer, sizeof(s_nor_program_buffer)))
-    {
-        PRINTF("Erase data -  read out data value incorrect !\r\n ");
-        return -1;
-    }
-    else
-    {
-        PRINTF("Erase data - successfully. \r\n");
-    }
-
-    for (i = 0; i < 0x1U; i++)
-    {
-        program_buffer[i] = i;
-    }
-*/
-    data = 4;
-    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 16, data);
+    data8 = 4;
+    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 17, data8);
     if (status != FLASH_COMPLETE)
     {
         PRINTF("Byte program failure !\r\n");
         return -1;
     }
+    buff_read = (uint8_t *) 0x70080000 + 17;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+    PRINTF("Valor del puntero: %d \r\n", *buff_read);
 
-    buff = (uint8_t *) 0x70080000 + 16;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
-
-    if (status != kStatus_Success)
-    {
-        return status;
-    }
-
-    PRINTF("Valor del puntero: %d \r\n", *buff);
+    data16 = 5;
+    status = WriteWord_FLASH(EXAMPLE_SECTOR * SECTOR_SIZE + 18, data16);
+    buff_read = (uint8_t *) 0x70080000 + 18;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+    PRINTF("Valor del puntero: %d \r\n", *buff_read);
+    buff_read = (uint8_t *) 0x70080000 + 19;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+    PRINTF("Valor del puntero: %d \r\n", *buff_read);
 
     msgRx.data[1] = 0;
-
     /* Enter an infinite loop*/
     while(1){
     	//valueADC_ch0_V = ADC_Get(1,0);
