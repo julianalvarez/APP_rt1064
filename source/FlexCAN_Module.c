@@ -16,6 +16,7 @@
 /* TODO: insert other definitions and declarations here. */
 
 /* Prototypes *****************************************************************/
+#define EXAMPLE_SECTOR                  		128
 
 int8_t status;
 uint8_t data8;
@@ -42,7 +43,7 @@ int main(void) {
 
     UART_Init();
 
-    SPIFLASH_init();
+    SFLASH_init();
 
     TIME_Init(1000U);
 
@@ -72,9 +73,9 @@ int main(void) {
 
     CANMSG_ABGC_Init(0x0);
 
-    // Erase sectors.
+    // Erase sector.
     PRINTF("Erasing Serial NOR over FlexSPI...\r\n");
-    status = SPIFLASH_erase_sector(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE);
+    status = SFLASH_erase_sector(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE);
     if (status != FLASH_COMPLETE)
     {
         PRINTF("Erase sector failure !\r\n");
@@ -82,7 +83,7 @@ int main(void) {
     }
 
     data8 = 4;
-    status = SPIFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 17, data8);
+    status = SFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 17, data8);
     if (status != FLASH_COMPLETE)
     {
         PRINTF("Byte program failure !\r\n");
@@ -99,9 +100,9 @@ int main(void) {
     PRINTF("Valor del puntero: %d \r\n", *buff_read);
 
     msgRx.data[1] = 0;
+
     /* Enter an infinite loop*/
     while(1){
-    	//valueADC_ch0_V = ADC_Get(1,0);
     	valueADC_ch9_V = CSTEER_GetWheelAngleVoltage();
 
 		PRINTF("%.3fV \r\n", valueADC_ch9_V);
