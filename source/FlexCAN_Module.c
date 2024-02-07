@@ -72,31 +72,42 @@ int main(void) {
     PRINTF("Init CAN2\r\n");
 
     CANMSG_ABGC_Init(0x0);
-
+/*
     // Erase sector.
     PRINTF("Erasing Serial NOR over FlexSPI...\r\n");
-    status = SFLASH_erase_sector(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE);
+    status = SFLASH_erase_sector(BOARD_FLEXSPI,( EXAMPLE_SECTOR)* FLASH_SECTOR_SIZE);
     if (status != FLASH_COMPLETE)
     {
         PRINTF("Erase sector failure !\r\n");
         return -1;
     }
-
-    data8 = 4;
-    status = SFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * SECTOR_SIZE + 17, data8);
-    if (status != FLASH_COMPLETE)
+*/
+    data8 = 0;
+    for(i=32000;i<32768;i++)
     {
-        PRINTF("Byte program failure !\r\n");
-        return -1;
+        status = SFLASH_WriteByte(BOARD_FLEXSPI, EXAMPLE_SECTOR * FLASH_SECTOR_SIZE + i, data8);
+        if (status != FLASH_COMPLETE)
+            {
+                PRINTF("Byte program failure !\r\n");
+                return -1;
+            }
     }
-    buff_read = (uint8_t *) 0x70080000 + 17;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+
+    status = Erase_FLASH(EXAMPLE_SECTOR* FLASH_SECTOR_SIZE, 0x8000);
+    if (status != FLASH_COMPLETE)
+        {
+            PRINTF("Byte program failure !\r\n");
+            return -1;
+        }
+
+    buff_read = (uint8_t *) 0x70080000 + 17;//0x70000000 + (0x1000 * 0x80) --> Byte 70080000
     PRINTF("Valor del puntero: %d \r\n", *buff_read);
 
     data16 = 5;
-    status = WriteWord_FLASH(EXAMPLE_SECTOR * SECTOR_SIZE + 18, data16);
-    buff_read = (uint8_t *) 0x70080000 + 18;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+    //status = WriteWord_FLASH(EXAMPLE_SECTOR * FLASH_SECTOR_SIZE + 18, data16);
+    buff_read = (uint8_t *) 0x70080000 + 18;//0x70000000 + (0x1000 * 0x80) --> Byte 70080000
     PRINTF("Valor del puntero: %d \r\n", *buff_read);
-    buff_read = (uint8_t *) 0x70080000 + 19;//0x70000000 + (0x1000 * 0x64) --> Byte 70064000
+    buff_read = (uint8_t *) 0x70080000 + 19;//0x70000000 + (0x1000 * 0x80) --> Byte 70080000
     PRINTF("Valor del puntero: %d \r\n", *buff_read);
 
     msgRx.data[1] = 0;
