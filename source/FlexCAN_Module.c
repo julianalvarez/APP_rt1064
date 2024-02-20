@@ -81,7 +81,7 @@ int main(void) {
         PRINTF("Erase sector failure !\r\n");
         return -1;
     }
-*/
+
     data8 = 0;
     for(i=32000;i<32768;i++)
     {
@@ -99,7 +99,7 @@ int main(void) {
             PRINTF("Byte program failure !\r\n");
             return -1;
         }
-
+*/
     buff_read = (uint8_t *) 0x70080000 + 17;//0x70000000 + (0x1000 * 0x80) --> Byte 70080000
     PRINTF("Valor del puntero: %d \r\n", *buff_read);
 

@@ -386,6 +386,7 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="CMSIS"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="device"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="hal"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="source"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="startup"/>
@@ -817,7 +818,7 @@
 &lt;vendor&gt;NXP&lt;/vendor&gt;&#13;
 &lt;memory can_program="true" id="Flash" is_ro="true" size="4096" type="Flash"/&gt;&#13;
 &lt;memory id="RAM" size="1024" type="RAM"/&gt;&#13;
-&lt;memoryInstance derived_from="Flash" driver="MIMXRT1064.cfx" edited="true" id="PROGRAM_FLASH" location="0x70000000" size="0x400000"/&gt;&#13;
+&lt;memoryInstance derived_from="Flash" driver="MIMXRT1064.cfx" edited="true" id="PROGRAM_FLASH" location="0x70030000" size="0x370000"/&gt;&#13;
 &lt;memoryInstance derived_from="RAM" edited="true" id="SRAM_DTC" location="0x20000000" size="0x20000"/&gt;&#13;
 &lt;memoryInstance derived_from="RAM" edited="true" id="SRAM_ITC" location="0x0" size="0x20000"/&gt;&#13;
 &lt;memoryInstance derived_from="RAM" edited="true" id="SRAM_OC2" location="0x20200000" size="0x80000"/&gt;&#13;
