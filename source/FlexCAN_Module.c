@@ -11,7 +11,7 @@
  */
 /* Include ********************************************************************/
 #include "FlexCAN_Module.h"
-
+#include "eeprom_virtualflash.h"
 /* TODO: insert other include files here. */
 /* TODO: insert other definitions and declarations here. */
 
@@ -43,7 +43,7 @@ int main(void) {
 
     UART_Init();
 
-    SFLASH_init();
+    Init_VIRTUAL_EEPROM();
 
     TIME_Init(1000U);
 
