@@ -157,6 +157,12 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/utilities}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/drivers}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/baremetal}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/lists}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/CMSIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/xip_board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/source}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.2137336021" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.1209527111" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" useByScannerDiscovery="true"/>
@@ -244,6 +250,12 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/utilities}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/drivers}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/baremetal}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/lists}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/CMSIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/xip_board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/source}&quot;"/>
 								</option>
 								<option id="gnu.both.asm.option.warnings.nowarn.283397118" name="Suppress warnings (-W)" superClass="gnu.both.asm.option.warnings.nowarn"/>
 								<option id="gnu.both.asm.option.version.223471542" name="Announce version (-v)" superClass="gnu.both.asm.option.version"/>
@@ -327,11 +339,13 @@
 									<listOptionValue builtIn="false" value="BSP_rt1064"/>
 									<listOptionValue builtIn="false" value="CSP_rt1064"/>
 									<listOptionValue builtIn="false" value="j1939_STEER_LIB"/>
+									<listOptionValue builtIn="false" value="common_package"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.paths.1727789025" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/CSP_rt1064/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/j1939_STEER_LIB/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/Debug}&quot;"/>
 								</option>
 								<option id="gnu.c.link.option.ldflags.268256620" name="Linker flags" superClass="gnu.c.link.option.ldflags"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.other.1360421169" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" valueType="stringList">
@@ -541,6 +555,14 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/utilities}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/drivers}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/baremetal}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/lists}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/CMSIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/xip_board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/utilities}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/drivers}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/board}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.1997067918" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.optimization.flags.175162787" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" useByScannerDiscovery="false" value="-fno-common" valueType="string"/>
@@ -626,6 +648,14 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/utilities}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/drivers}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/baremetal}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/lists}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/CMSIS}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/xip_board}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/utilities}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/drivers}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/board}&quot;"/>
 								</option>
 								<option id="gnu.both.asm.option.warnings.nowarn.1593933998" name="Suppress warnings (-W)" superClass="gnu.both.asm.option.warnings.nowarn"/>
 								<option id="gnu.both.asm.option.version.1986431930" name="Announce version (-v)" superClass="gnu.both.asm.option.version"/>
@@ -707,11 +737,13 @@
 									<listOptionValue builtIn="false" value="j1939_STEER_LIB"/>
 									<listOptionValue builtIn="false" value="CSP_rt1064"/>
 									<listOptionValue builtIn="false" value="BSP_rt1064"/>
+									<listOptionValue builtIn="false" value="common_package"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.paths.1504605374" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/j1939_STEER_LIB/Release}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/CSP_rt1064/Release}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BSP_rt1064/Release}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_package/Release}&quot;"/>
 								</option>
 								<option id="gnu.c.link.option.ldflags.545959087" name="Linker flags" superClass="gnu.c.link.option.ldflags"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.other.1781748924" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" valueType="stringList">

@@ -6,6 +6,7 @@
 		<project>CSP_rt1064</project>
 		<project>j1939_STEER_LIB</project>
 		<project>BSP_rt1064</project>
+		<project>common_package</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
